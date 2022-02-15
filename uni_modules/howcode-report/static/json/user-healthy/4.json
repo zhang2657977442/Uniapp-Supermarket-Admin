@@ -1,0 +1,26 @@
+[
+	{
+		"kind":1,
+		"background":["#B678FD","#4A64F9"],
+		"content":[
+			{"text":"","value":"42%","colortext":"","colorvalue":"#fff","size":44},
+			{"text":"当日扫码率","value":"","colortext":"#fff","colorvalue":"","size":24}
+		]
+	},
+	{
+		"kind":1,
+		"background":["#B678FD","#4A64F9"],
+		"content":[
+			{"text":"","value":"37%","colortext":"","colorvalue":"#fff","size":44},
+			{"text":"累计扫码率","value":"","colortext":"#fff","colorvalue":"","size":24}
+		]
+	},
+	{
+		"kind":2,
+		"background":["#B678FD","#4A64F9"],
+		"content":[
+			{"text":"环比增长","value":"3.2%","colortext":"#fff","colorvalue":"#fff","size":24},
+			{"text":"同比增长","value":"1.1%","colortext":"#fff","colorvalue":"#fff","size":24}
+		]
+	}
+]
