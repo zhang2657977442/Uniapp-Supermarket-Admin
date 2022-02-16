@@ -16,34 +16,20 @@
       </view>
     </view>
     <view class="uni-container">
-      <unicloud-db ref="udb" :collection="collectionList" field="mobile,email,code,type,state,ip,created_at,expired_at" :where="where" page-data="replace"
+      <unicloud-db ref="udb" :collection="collectionList" field="name,parent_id,sort" :where="where" page-data="replace"
         :orderby="orderby" :getcount="true" :page-size="options.pageSize" :page-current="options.pageCurrent"
         v-slot:default="{data,pagination,loading,error,options}" :options="options" loadtime="manual" @load="onqueryload">
         <uni-table ref="table" :loading="loading" :emptyText="error.message || '没有更多数据'" border stripe type="selection" @selection-change="selectionChange">
           <uni-tr>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'mobile')" sortable @sort-change="sortChange($event, 'mobile')">mobile</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'email')" sortable @sort-change="sortChange($event, 'email')">email</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'code')" sortable @sort-change="sortChange($event, 'code')">code</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'type')" sortable @sort-change="sortChange($event, 'type')">type</uni-th>
-            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'state')" sortable @sort-change="sortChange($event, 'state')">state</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'ip')" sortable @sort-change="sortChange($event, 'ip')">ip</uni-th>
-            <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'created_at')" sortable @sort-change="sortChange($event, 'created_at')">created_at</uni-th>
-            <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'expired_at')" sortable @sort-change="sortChange($event, 'expired_at')">expired_at</uni-th>
+            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'name')" sortable @sort-change="sortChange($event, 'name')">类别名称</uni-th>
+            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'parent_id')" sortable @sort-change="sortChange($event, 'parent_id')">parent_id</uni-th>
+            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'sort')" sortable @sort-change="sortChange($event, 'sort')">排序</uni-th>
             <uni-th align="center">操作</uni-th>
           </uni-tr>
           <uni-tr v-for="(item,index) in data" :key="index">
-            <uni-td align="center">{{item.mobile}}</uni-td>
-            <uni-td align="center">{{item.email}}</uni-td>
-            <uni-td align="center">{{item.code}}</uni-td>
-            <uni-td align="center">{{item.type}}</uni-td>
-            <uni-td align="center">{{item.state}}</uni-td>
-            <uni-td align="center">{{item.ip}}</uni-td>
-            <uni-td align="center">
-              <uni-dateformat :threshold="[0, 0]" :date="item.created_at"></uni-dateformat>
-            </uni-td>
-            <uni-td align="center">
-              <uni-dateformat :threshold="[0, 0]" :date="item.expired_at"></uni-dateformat>
-            </uni-td>
+            <uni-td align="center">{{item.name}}</uni-td>
+            <uni-td align="center">{{item.parent_id}}</uni-td>
+            <uni-td align="center">{{item.sort}}</uni-td>
             <uni-td align="center">
               <view class="uni-group">
                 <button @click="navigateTo('./edit?id='+item._id, false)" class="uni-button" size="mini" type="primary">修改</button>
@@ -61,7 +47,7 @@
 </template>
 
 <script>
-  import { enumConverter, filterToWhere } from '../../js_sdk/validator/opendb-verify-codes.js';
+  import { enumConverter, filterToWhere } from '../../../js_sdk/validator/opendb-mall-categories.js';
 
   const db = uniCloud.database()
   // 表查询配置
@@ -79,7 +65,7 @@
   export default {
     data() {
       return {
-        collectionList: "opendb-verify-codes",
+        collectionList: "opendb-mall-categories",
         query: '',
         where: '',
         orderby: dbOrderBy,
@@ -96,17 +82,12 @@
           height: 64
         },
         exportExcel: {
-          "filename": "opendb-verify-codes.xls",
+          "filename": "opendb-mall-categories.xls",
           "type": "xls",
           "fields": {
-            "mobile": "mobile",
-            "email": "email",
-            "code": "code",
-            "type": "type",
-            "state": "state",
-            "ip": "ip",
-            "created_at": "created_at",
-            "expired_at": "expired_at"
+            "类别名称": "name",
+            "parent_id": "parent_id",
+            "排序": "sort"
           }
         },
         exportExcelData: []

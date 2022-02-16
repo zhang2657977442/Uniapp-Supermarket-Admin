@@ -41,7 +41,7 @@
 							@filter-change="filterChange($event, 'status')">用户状态</uni-th>
 						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'email')"
 							sortable @sort-change="sortChange($event, 'email')">邮箱</uni-th>
-						<uni-th align="center">角色</uni-th>
+						<uni-th align="center">岗位</uni-th>
 						<uni-th align="center" filter-type="select" :filter-data="tagsData"
 							@filter-change="filterChange($event, 'tags')">用户标签</uni-th>
 						<uni-th align="center">可登录应用</uni-th>

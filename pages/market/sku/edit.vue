@@ -1,29 +1,26 @@
 <template>
   <view class="uni-container">
     <uni-forms ref="form" :value="formData" validateTrigger="bind">
-      <uni-forms-item name="mobile" label="">
-        <uni-easyinput placeholder="手机号码" v-model="formData.mobile"></uni-easyinput>
+      <uni-forms-item name="create_date" label="" required>
+        <uni-datetime-picker return-type="timestamp" v-model="formData.create_date"></uni-datetime-picker>
       </uni-forms-item>
-      <uni-forms-item name="email" label="">
-        <uni-easyinput placeholder="邮箱" v-model="formData.email"></uni-easyinput>
+      <uni-forms-item name="goods_id" label="" required>
+        <uni-easyinput placeholder="商品 id，参考 opendb-mall-goods 表" v-model="formData.goods_id"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="code" label="">
-        <uni-easyinput placeholder="验证码" v-model="formData.code"></uni-easyinput>
+      <uni-forms-item name="market_price" label="">
+        <uni-easyinput placeholder="市场价，以分为单位，避免浮点计算的精度问题" type="number" v-model="formData.market_price"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="type" label="">
-        <uni-easyinput placeholder="验证类型：login, bind, unbind, pay" v-model="formData.type"></uni-easyinput>
+      <uni-forms-item name="price" label="" required>
+        <uni-easyinput placeholder="价格，以分为单位，避免浮点计算的精度问题" type="number" v-model="formData.price"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="state" label="">
-        <uni-easyinput placeholder="验证状态：0 未验证、1 已验证、2 已作废" type="number" v-model="formData.state"></uni-easyinput>
+      <uni-forms-item name="sku_name" label="" required>
+        <uni-easyinput placeholder="SKU名称" v-model="formData.sku_name" trim="both"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="ip" label="">
-        <uni-easyinput placeholder="请求时客户端IP地址" v-model="formData.ip"></uni-easyinput>
+      <uni-forms-item name="stock" label="" required>
+        <uni-easyinput placeholder="库存" type="number" v-model="formData.stock"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="created_at" label="">
-        <uni-datetime-picker return-type="timestamp" v-model="formData.created_at"></uni-datetime-picker>
-      </uni-forms-item>
-      <uni-forms-item name="expired_at" label="">
-        <uni-datetime-picker return-type="timestamp" v-model="formData.expired_at"></uni-datetime-picker>
+      <uni-forms-item name="update_date" label="" required>
+        <uni-datetime-picker return-type="timestamp" v-model="formData.update_date"></uni-datetime-picker>
       </uni-forms-item>
       <view class="uni-button-group">
         <button type="primary" class="uni-button" style="width: 100px;" @click="submit">提交</button>
@@ -36,11 +33,11 @@
 </template>
 
 <script>
-  import { validator } from '../../js_sdk/validator/opendb-verify-codes.js';
+  import { validator } from '../../../js_sdk/validator/opendb-mall-sku.js';
 
   const db = uniCloud.database();
   const dbCmd = db.command;
-  const dbCollectionName = 'opendb-verify-codes';
+  const dbCollectionName = 'opendb-mall-sku';
 
   function getValidator(fields) {
     let result = {}
@@ -55,14 +52,13 @@
   export default {
     data() {
       let formData = {
-        "mobile": "",
-        "email": "",
-        "code": "",
-        "type": "",
-        "state": null,
-        "ip": "",
-        "created_at": null,
-        "expired_at": null
+        "create_date": null,
+        "goods_id": "",
+        "market_price": null,
+        "price": null,
+        "sku_name": "",
+        "stock": null,
+        "update_date": null
       }
       return {
         formData,
@@ -125,7 +121,7 @@
         uni.showLoading({
           mask: true
         })
-        db.collection(dbCollectionName).doc(id).field("mobile,email,code,type,state,ip,created_at,expired_at").get().then((res) => {
+        db.collection(dbCollectionName).doc(id).field("create_date,goods_id,market_price,price,sku_name,stock,update_date").get().then((res) => {
           const data = res.result.data[0]
           if (data) {
             this.formData = data

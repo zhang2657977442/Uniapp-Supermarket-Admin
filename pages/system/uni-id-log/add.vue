@@ -30,7 +30,7 @@
 </template>
 
 <script>
-  import { validator } from '../../js_sdk/validator/uni-id-log.js';
+  import { validator } from '../../../js_sdk/validator/uni-id-log.js';
 
   const db = uniCloud.database();
   const dbCmd = db.command;
@@ -75,13 +75,6 @@
         }
       }
     },
-    onLoad(e) {
-      if (e.id) {
-        const id = e.id
-        this.formDataId = id
-        this.getDetail(id)
-      }
-    },
     onReady() {
       this.$refs.form.setRules(this.rules)
     },
@@ -106,9 +99,9 @@
        */
       submitForm(value) {
         // 使用 clientDB 提交数据
-        return db.collection(dbCollectionName).doc(this.formDataId).update(value).then((res) => {
+        return db.collection(dbCollectionName).add(value).then((res) => {
           uni.showToast({
-            title: '修改成功'
+            title: '新增成功'
           })
           this.getOpenerEventChannel().emit('refreshData')
           setTimeout(() => uni.navigateBack(), 500)
@@ -117,29 +110,6 @@
             content: err.message || '请求服务失败',
             showCancel: false
           })
-        })
-      },
-
-      /**
-       * 获取表单数据
-       * @param {Object} id
-       */
-      getDetail(id) {
-        uni.showLoading({
-          mask: true
-        })
-        db.collection(dbCollectionName).doc(id).field("user_id,ua,device_uuid,type,state,ip").get().then((res) => {
-          const data = res.result.data[0]
-          if (data) {
-            this.formData = data
-          }
-        }).catch((err) => {
-          uni.showModal({
-            content: err.message || '请求服务失败',
-            showCancel: false
-          })
-        }).finally(() => {
-          uni.hideLoading()
         })
       }
     }

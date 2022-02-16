@@ -1,0 +1,36 @@
+{
+			"bsonType": "object",
+			"required": [
+				"name",
+				"expect"
+			],
+			"permission": {
+				"read": true,
+				"create": false,
+				"update": false,
+				"delete": false
+			},
+			"properties": {
+				"_id": {
+					"description": "存储文档 ID（指标 ID），系统自动生成"
+				},
+				"name": {
+					"bsonType": "string",
+					"description": "名称",
+					"title": "名称",
+					"trim": "both"
+				},
+				"expect": {
+					"bsonType": "int",
+					"description": "目标值",
+					"title": "目标值",
+					"trim": "both"
+				},
+				"average": {
+					"bsonType": "string",
+					"description": "平均完成水平",
+					"title": "平均完成水平",
+					"trim": "both"
+				}
+			}
+		}

@@ -16,26 +16,32 @@
       </view>
     </view>
     <view class="uni-container">
-      <unicloud-db ref="udb" :collection="collectionList" field="user_id,ua,device_uuid,type,state,ip" :where="where" page-data="replace"
+      <unicloud-db ref="udb" :collection="collectionList" field="create_date,goods_id,market_price,price,sku_name,stock,update_date" :where="where" page-data="replace"
         :orderby="orderby" :getcount="true" :page-size="options.pageSize" :page-current="options.pageCurrent"
         v-slot:default="{data,pagination,loading,error,options}" :options="options" loadtime="manual" @load="onqueryload">
         <uni-table ref="table" :loading="loading" :emptyText="error.message || '没有更多数据'" border stripe type="selection" @selection-change="selectionChange">
           <uni-tr>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'user_id')" sortable @sort-change="sortChange($event, 'user_id')">user_id</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'ua')" sortable @sort-change="sortChange($event, 'ua')">ua</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'device_uuid')" sortable @sort-change="sortChange($event, 'device_uuid')">device_uuid</uni-th>
-            <uni-th align="center" filter-type="select" :filter-data="options.filterData.type_localdata" @filter-change="filterChange($event, 'type')">type</uni-th>
-            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'state')" sortable @sort-change="sortChange($event, 'state')">state</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'ip')" sortable @sort-change="sortChange($event, 'ip')">ip</uni-th>
+            <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'create_date')" sortable @sort-change="sortChange($event, 'create_date')">create_date</uni-th>
+            <uni-th align="center" sortable @sort-change="sortChange($event, 'goods_id')">goods_id</uni-th>
+            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'market_price')" sortable @sort-change="sortChange($event, 'market_price')">market_price</uni-th>
+            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'price')" sortable @sort-change="sortChange($event, 'price')">price</uni-th>
+            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'sku_name')" sortable @sort-change="sortChange($event, 'sku_name')">sku_name</uni-th>
+            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'stock')" sortable @sort-change="sortChange($event, 'stock')">stock</uni-th>
+            <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'update_date')" sortable @sort-change="sortChange($event, 'update_date')">update_date</uni-th>
             <uni-th align="center">操作</uni-th>
           </uni-tr>
           <uni-tr v-for="(item,index) in data" :key="index">
-            <uni-td align="center">{{item.user_id}}</uni-td>
-            <uni-td align="center">{{item.ua}}</uni-td>
-            <uni-td align="center">{{item.device_uuid}}</uni-td>
-            <uni-td align="center">{{options.type_valuetotext[item.type]}}</uni-td>
-            <uni-td align="center">{{item.state}}</uni-td>
-            <uni-td align="center">{{item.ip}}</uni-td>
+            <uni-td align="center">
+              <uni-dateformat :threshold="[0, 0]" :date="item.create_date"></uni-dateformat>
+            </uni-td>
+            <uni-td align="center">{{item.goods_id}}</uni-td>
+            <uni-td align="center">{{item.market_price}}</uni-td>
+            <uni-td align="center">{{item.price}}</uni-td>
+            <uni-td align="center">{{item.sku_name}}</uni-td>
+            <uni-td align="center">{{item.stock}}</uni-td>
+            <uni-td align="center">
+              <uni-dateformat :threshold="[0, 0]" :date="item.update_date"></uni-dateformat>
+            </uni-td>
             <uni-td align="center">
               <view class="uni-group">
                 <button @click="navigateTo('./edit?id='+item._id, false)" class="uni-button" size="mini" type="primary">修改</button>
@@ -53,7 +59,7 @@
 </template>
 
 <script>
-  import { enumConverter, filterToWhere } from '../../js_sdk/validator/uni-id-log.js';
+  import { enumConverter, filterToWhere } from '../../../js_sdk/validator/opendb-mall-sku.js';
 
   const db = uniCloud.database()
   // 表查询配置
@@ -71,7 +77,7 @@
   export default {
     data() {
       return {
-        collectionList: "uni-id-log",
+        collectionList: "opendb-mall-sku",
         query: '',
         where: '',
         orderby: dbOrderBy,
@@ -80,18 +86,7 @@
         options: {
           pageSize,
           pageCurrent,
-          filterData: {
-            "type_localdata": [
-              {
-                "value": "login",
-                "text": "login"
-              },
-              {
-                "value": "logout",
-                "text": "logout"
-              }
-            ]
-          },
+          filterData: {},
           ...enumConverter
         },
         imageStyles: {
@@ -99,15 +94,16 @@
           height: 64
         },
         exportExcel: {
-          "filename": "uni-id-log.xls",
+          "filename": "opendb-mall-sku.xls",
           "type": "xls",
           "fields": {
-            "user_id": "user_id",
-            "ua": "ua",
-            "device_uuid": "device_uuid",
-            "type": "type",
-            "state": "state",
-            "ip": "ip"
+            "create_date": "create_date",
+            "goods_id": "goods_id",
+            "market_price": "market_price",
+            "price": "price",
+            "sku_name": "sku_name",
+            "stock": "stock",
+            "update_date": "update_date"
           }
         },
         exportExcelData: []
