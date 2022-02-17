@@ -44,7 +44,7 @@
 					</view>
 					<template v-if="userInfo.username">
 						<view class="menu-item username">
-							<uni-icons class="person" type="person" color="#666" size="13"></uni-icons>
+							<uni-icons class="person" type="person" color="#fff" size="13"></uni-icons>
 							<text>{{userInfo.username}}</text>
 						</view>
 						<view class="menu-item" @click="changePassword">
@@ -199,7 +199,7 @@
 
 <style lang="scss">
 	.header {
-		height: 60px;
+		height: 48px;
 		width: 100%;
 		box-sizing: border-box;
 		border-bottom: 1px solid darken($top-window-bg-color, 8%);
@@ -227,6 +227,8 @@
 		}
 
 		text {
+			font-size: $uni-font-size-lg;
+			font-weight: 600;
 			margin-left: 8px;
 		}
 	}
@@ -284,7 +286,7 @@
 	.menu-item {
 		padding: 8px;
 		font-size: 13px;
-		color: #666;
+		color: #fff;
 		line-height: 1;
 	}
 

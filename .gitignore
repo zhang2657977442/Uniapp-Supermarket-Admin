@@ -1,16 +1,22 @@
-# Mac
 .DS_Store
-**/.DS_Store
+node_modules
+/dist
+/unpackage
 
-# vim/vi
-*.swp
+# local env files
+.env.local
+.env.*.local
 
-# JavaScript
-node_modules/
-.node_modules/
-.eslintcache
-unpackage/dist/build/
-unpackage/dist/dev/
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+yarn.lock
 
-# python
-*.pyc
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
