@@ -2,7 +2,7 @@
 	<view class="fix-top-window">
 		<view class="uni-header">
 			<view class="uni-group hide-on-phone">
-				<view class="uni-title">标签管理</view>
+			    <view class="uni-title">{{$t('department.text.title')}}</view>
 				<view class="uni-sub-title"></view>
 			</view>
 			<view class="uni-group">
@@ -26,11 +26,11 @@
 					type="selection" @selection-change="selectionChange">
 					<uni-tr>
 						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'tagid')"
-							sortable @sort-change="sortChange($event, 'tagid')">标签的tagid</uni-th>
+							sortable @sort-change="sortChange($event, 'tagid')">部门id</uni-th>
 						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'name')"
-							sortable @sort-change="sortChange($event, 'name')">标签名称</uni-th>
+							sortable @sort-change="sortChange($event, 'name')">部门名称</uni-th>
 						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'description')"
-							sortable @sort-change="sortChange($event, 'description')">标签描述</uni-th>
+							sortable @sort-change="sortChange($event, 'description')">部门描述</uni-th>
 						<uni-th align="center" filter-type="timestamp"
 							@filter-change="filterChange($event, 'create_date')" sortable
 							@sort-change="sortChange($event, 'create_date')">创建时间</uni-th>

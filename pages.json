@@ -212,17 +212,17 @@
 			}
 		}, 
 		{
-			"path": "uni-id-log/add",
+			"path": "log/add",
 			"style": {
 				"navigationBarTitleText": "新增"
 			}
 		}, {
-			"path": "uni-id-log/edit",
+			"path": "log/edit",
 			"style": {
 				"navigationBarTitleText": "编辑"
 			}
 		}, {
-			"path": "uni-id-log/list",
+			"path": "log/list",
 			"style": {
 				"navigationBarTitleText": "列表"
 			}

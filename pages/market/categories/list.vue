@@ -2,7 +2,7 @@
   <view>
     <view class="uni-header">
       <view class="uni-group">
-        <view class="uni-title"></view>
+       	<view class="uni-title">{{$t('categories.text.title')}}</view>
         <view class="uni-sub-title"></view>
       </view>
       <view class="uni-group">
@@ -22,7 +22,7 @@
         <uni-table ref="table" :loading="loading" :emptyText="error.message || '没有更多数据'" border stripe type="selection" @selection-change="selectionChange">
           <uni-tr>
             <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'name')" sortable @sort-change="sortChange($event, 'name')">类别名称</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'parent_id')" sortable @sort-change="sortChange($event, 'parent_id')">parent_id</uni-th>
+            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'parent_id')" sortable @sort-change="sortChange($event, 'parent_id')">一级类别</uni-th>
             <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'sort')" sortable @sort-change="sortChange($event, 'sort')">排序</uni-th>
             <uni-th align="center">操作</uni-th>
           </uni-tr>

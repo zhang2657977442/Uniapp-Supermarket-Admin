@@ -2,7 +2,7 @@
 	<view class="fix-top-window">
 		<view class="uni-header">
 			<view class="uni-group hide-on-phone">
-				<view class="uni-title">{{$t('role.text.roleManager')}}</view>
+				<view class="uni-title">{{$t('jobs.text.title')}}</view>
 				<view class="uni-sub-title"></view>
 			</view>
 			<view class="uni-group">

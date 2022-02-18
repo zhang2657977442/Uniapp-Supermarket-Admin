@@ -2,7 +2,7 @@
   <view>
     <view class="uni-header">
       <view class="uni-group">
-        <view class="uni-title"></view>
+		<view class="uni-title">{{$t('goods.text.title')}}</view>
         <view class="uni-sub-title"></view>
       </view>
       <view class="uni-group">
@@ -21,40 +21,40 @@
         v-slot:default="{data,pagination,loading,error,options}" :options="options" loadtime="manual" @load="onqueryload">
         <uni-table ref="table" :loading="loading" :emptyText="error.message || '没有更多数据'" border stripe type="selection" @selection-change="selectionChange">
           <uni-tr>
-            <uni-th align="center" sortable @sort-change="sortChange($event, 'category_id')">category_id</uni-th>
+            <uni-th align="center" sortable @sort-change="sortChange($event, '_id')">商品id</uni-th>
             <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'goods_sn')" sortable @sort-change="sortChange($event, 'goods_sn')">货号</uni-th>
             <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'name')" sortable @sort-change="sortChange($event, 'name')">名称</uni-th>
             <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'keywords')" sortable @sort-change="sortChange($event, 'keywords')">关键字</uni-th>
             <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'goods_desc')" sortable @sort-change="sortChange($event, 'goods_desc')">详细描述</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'goods_thumb')" sortable @sort-change="sortChange($event, 'goods_thumb')">缩略图地址</uni-th>
-            <uni-th align="center" sortable @sort-change="sortChange($event, 'goods_banner_imgs')">goods_banner_imgs</uni-th>
+            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'goods_thumb')" sortable @sort-change="sortChange($event, 'goods_thumb')">图片</uni-th>
+            <!-- <uni-th align="center" sortable @sort-change="sortChange($event, 'goods_banner_imgs')">goods_banner_imgs</uni-th> -->
             <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'remain_count')" sortable @sort-change="sortChange($event, 'remain_count')">库存数量</uni-th>
-            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'month_sell_count')" sortable @sort-change="sortChange($event, 'month_sell_count')">month_sell_count</uni-th>
-            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'total_sell_count')" sortable @sort-change="sortChange($event, 'total_sell_count')">total_sell_count</uni-th>
-            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'comment_count')" sortable @sort-change="sortChange($event, 'comment_count')">comment_count</uni-th>
+            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'month_sell_count')" sortable @sort-change="sortChange($event, 'month_sell_count')">月销量</uni-th>
+            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'total_sell_count')" sortable @sort-change="sortChange($event, 'total_sell_count')">总销量</uni-th>
+            <!-- <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'comment_count')" sortable @sort-change="sortChange($event, 'comment_count')">comment_count</uni-th> -->
             <uni-th align="center" sortable @sort-change="sortChange($event, 'is_real')">是否为实物</uni-th>
             <uni-th align="center" sortable @sort-change="sortChange($event, 'is_on_sale')">是否上架</uni-th>
-            <uni-th align="center" sortable @sort-change="sortChange($event, 'is_alone_sale')">is_alone_sale</uni-th>
-            <uni-th align="center" sortable @sort-change="sortChange($event, 'is_best')">is_best</uni-th>
+            <uni-th align="center" sortable @sort-change="sortChange($event, 'is_alone_sale')">是否能单独销售</uni-th>
+            <uni-th align="center" sortable @sort-change="sortChange($event, 'is_best')">是否精品</uni-th>
             <uni-th align="center" sortable @sort-change="sortChange($event, 'is_new')">是否新品</uni-th>
-            <uni-th align="center" sortable @sort-change="sortChange($event, 'is_hot')">is_hot</uni-th>
-            <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'add_date')" sortable @sort-change="sortChange($event, 'add_date')">add_date</uni-th>
-            <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'last_modify_date')" sortable @sort-change="sortChange($event, 'last_modify_date')">last_modify_date</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'seller_note')" sortable @sort-change="sortChange($event, 'seller_note')">seller_note</uni-th>
+            <uni-th align="center" sortable @sort-change="sortChange($event, 'is_hot')">是否热销</uni-th>
+            <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'add_date')" sortable @sort-change="sortChange($event, 'add_date')">上架时间</uni-th>
+            <!-- <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'last_modify_date')" sortable @sort-change="sortChange($event, 'last_modify_date')">last_modify_date</uni-th> -->
+            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'seller_note')" sortable @sort-change="sortChange($event, 'seller_note')">备注</uni-th>
             <uni-th align="center">操作</uni-th>
           </uni-tr>
           <uni-tr v-for="(item,index) in data" :key="index">
-            <uni-td align="center">{{item.category_id}}</uni-td>
+            <uni-td align="center">{{item._id}}</uni-td>
             <uni-td align="center">{{item.goods_sn}}</uni-td>
             <uni-td align="center">{{item.name}}</uni-td>
             <uni-td align="center">{{item.keywords}}</uni-td>
             <uni-td align="center">{{item.goods_desc}}</uni-td>
-            <uni-td align="center">{{item.goods_thumb}}</uni-td>
-            <uni-td align="center">{{item.goods_banner_imgs}}</uni-td>
+            <uni-td align="center"><image :src="item.goods_thumb" mode=""></image></uni-td>
+            <!-- <uni-td align="center">{{item.goods_banner_imgs}}</uni-td> -->
             <uni-td align="center">{{item.remain_count}}</uni-td>
             <uni-td align="center">{{item.month_sell_count}}</uni-td>
             <uni-td align="center">{{item.total_sell_count}}</uni-td>
-            <uni-td align="center">{{item.comment_count}}</uni-td>
+            <!-- <uni-td align="center">{{item.comment_count}}</uni-td> -->
             <uni-td align="center">{{item.is_real == true ? '✅' : '❌'}}</uni-td>
             <uni-td align="center">{{item.is_on_sale == true ? '✅' : '❌'}}</uni-td>
             <uni-td align="center">{{item.is_alone_sale == true ? '✅' : '❌'}}</uni-td>
@@ -64,9 +64,9 @@
             <uni-td align="center">
               <uni-dateformat :threshold="[0, 0]" :date="item.add_date"></uni-dateformat>
             </uni-td>
-            <uni-td align="center">
+            <!-- <uni-td align="center">
               <uni-dateformat :threshold="[0, 0]" :date="item.last_modify_date"></uni-dateformat>
-            </uni-td>
+            </uni-td> -->
             <uni-td align="center">{{item.seller_note}}</uni-td>
             <uni-td align="center">
               <view class="uni-group">

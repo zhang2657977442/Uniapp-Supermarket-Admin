@@ -2,7 +2,7 @@
 	<view class="fix-top-window">
 		<view class="uni-header">
 			<view class="uni-group hide-on-phone">
-				<view class="uni-title">{{$t('user.text.userManager')}}</view>
+				<view class="uni-title">{{$t('employee.text.title')}}</view>
 				<view class="uni-sub-title"></view>
 			</view>
 			<view class="uni-group">
@@ -34,20 +34,20 @@
 					type="selection" @selection-change="selectionChange">
 					<uni-tr>
 						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'username')"
-							sortable @sort-change="sortChange($event, 'username')">用户名</uni-th>
+							sortable @sort-change="sortChange($event, 'username')">员工名</uni-th>
 						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'mobile')"
 							sortable @sort-change="sortChange($event, 'mobile')">手机号码</uni-th>
 						<uni-th align="center" filter-type="select" :filter-data="options.filterData.status_localdata"
-							@filter-change="filterChange($event, 'status')">用户状态</uni-th>
+							@filter-change="filterChange($event, 'status')">员工状态</uni-th>
 						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'email')"
 							sortable @sort-change="sortChange($event, 'email')">邮箱</uni-th>
 						<uni-th align="center">岗位</uni-th>
 						<uni-th align="center" filter-type="select" :filter-data="tagsData"
-							@filter-change="filterChange($event, 'tags')">用户标签</uni-th>
+							@filter-change="filterChange($event, 'tags')">所在部门</uni-th>
 						<uni-th align="center">可登录应用</uni-th>
 						<uni-th align="center" filter-type="timestamp"
 							@filter-change="filterChange($event, 'register_date')" sortable
-							@sort-change="sortChange($event, 'register_date')">注册时间</uni-th>
+							@sort-change="sortChange($event, 'register_date')">上岗时间</uni-th>
 						<uni-th align="center">操作</uni-th>
 					</uni-tr>
 					<uni-tr v-for="(item,index) in data" :key="index">

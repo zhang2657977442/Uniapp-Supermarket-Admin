@@ -2,7 +2,7 @@
   <view>
     <view class="uni-header">
       <view class="uni-group">
-        <view class="uni-title"></view>
+        <view class="uni-title">{{$t('sku.text.title')}}</view>
         <view class="uni-sub-title"></view>
       </view>
       <view class="uni-group">
@@ -21,13 +21,13 @@
         v-slot:default="{data,pagination,loading,error,options}" :options="options" loadtime="manual" @load="onqueryload">
         <uni-table ref="table" :loading="loading" :emptyText="error.message || '没有更多数据'" border stripe type="selection" @selection-change="selectionChange">
           <uni-tr>
-            <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'create_date')" sortable @sort-change="sortChange($event, 'create_date')">create_date</uni-th>
+            <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'create_date')" sortable @sort-change="sortChange($event, 'create_date')">创建时间</uni-th>
             <uni-th align="center" sortable @sort-change="sortChange($event, 'goods_id')">goods_id</uni-th>
-            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'market_price')" sortable @sort-change="sortChange($event, 'market_price')">market_price</uni-th>
-            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'price')" sortable @sort-change="sortChange($event, 'price')">price</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'sku_name')" sortable @sort-change="sortChange($event, 'sku_name')">sku_name</uni-th>
-            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'stock')" sortable @sort-change="sortChange($event, 'stock')">stock</uni-th>
-            <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'update_date')" sortable @sort-change="sortChange($event, 'update_date')">update_date</uni-th>
+            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'market_price')" sortable @sort-change="sortChange($event, 'market_price')">市场价格</uni-th>
+            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'price')" sortable @sort-change="sortChange($event, 'price')">价格</uni-th>
+            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'sku_name')" sortable @sort-change="sortChange($event, 'sku_name')">sku名称</uni-th>
+            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'stock')" sortable @sort-change="sortChange($event, 'stock')">库存</uni-th>
+            <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'update_date')" sortable @sort-change="sortChange($event, 'update_date')">更新时间</uni-th>
             <uni-th align="center">操作</uni-th>
           </uni-tr>
           <uni-tr v-for="(item,index) in data" :key="index">
