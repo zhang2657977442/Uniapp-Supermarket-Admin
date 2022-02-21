@@ -146,7 +146,7 @@ const getMallTextBlock = (data) => {
 						array.map(x => {
 							let obj = {
 								"kind": 5,
-								"background": ["#F77E89", "#F7953B"],
+								"background": ["#3EB2F5", "#9374F7"],
 								"content": [{
 										"text": x.name,
 										"value": "",
@@ -322,7 +322,7 @@ const getMallTextBlock = (data) => {
 						two_array.map(x => {
 							let obj = {
 								"kind": 5,
-								"background": ["#F77E89", "#F7953B"],
+									"background": ["#3EB2F5", "#9374F7"],
 								"content": [{
 										"text": x.name,
 										"value": "",

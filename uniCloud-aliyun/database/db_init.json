@@ -24,7 +24,7 @@
 	"uni-id-tag": {
 		"data": []
 	},
-	"opendb-admin-menus": {
+	"menus": {
 		"data": [{
 			"menu_id": "system_management",
 			"name": "系统管理",

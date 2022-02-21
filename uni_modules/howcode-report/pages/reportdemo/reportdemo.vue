@@ -3,32 +3,10 @@
 		<!-- #ifndef H5 -->
 		<fix-window />
 		<!-- #endif -->
-		<!--滑动列表头-->
-		<view id="tabBar" class="uni-tabs__header">
-			<view class="uni-tabs__nav-wrap">
-				<view class="uni-tabs__nav-scroll">
-					<scroll-view class="uni-tabs__nav" :scroll-x="true">
-						<view v-for="(item, index) in tabList" :key="index" @click="switchTab(item.value)"
-							:class="{'is-active':currentTab===item.value}" class="uni-tabs__item">{{item.text}}</view>
-					</scroll-view>
-				</view>
-			</view>
-		</view>
 		<!--主体内容-->
 		<view class="data_body" :style="{height: scrollHeight}">
-			<view v-if="currentTab == 'PAGE_ONE'">
-				<page-one :scrollHeight="scrollHeight" :currentTab="currentTab" :isPC="isPC" :isCanvas2d="isCanvas2d" />
-			</view>
-			<view v-else-if="currentTab == 'PAGE_TWO'">
-				<page-two :scrollHeight="scrollHeight" :currentTab="currentTab" :isPC="isPC" :isCanvas2d="isCanvas2d" />
-			</view>
-			<view v-else-if="currentTab == 'PAGE_THREE'">
-				<page-three :scrollHeight="scrollHeight" :currentTab="currentTab" :isPC="isPC"
-					:isCanvas2d="isCanvas2d" />
-			</view>
-			<view v-else-if="currentTab == 'PAGE_FOUR'">
-				<page-four :scrollHeight="scrollHeight" :currentTab="currentTab" :isPC="isPC"
-					:isCanvas2d="isCanvas2d" />
+			<view>
+				<analyse :scrollHeight="scrollHeight"  :isPC="isPC" :isCanvas2d="isCanvas2d" />
 			</view>
 		</view>
 	</view>
@@ -36,21 +14,13 @@
 <script>
 	import Config from "../../static/js/config.js"
 	import Common from "../../static/js/common.js"
-	import PageOne from "../../components/data-center/page-one.vue"
-	import PageTwo from "../../components/data-center/page-two.vue"
-	import PageThree from "../../components/data-center/page-three.vue"
-	import PageFour from "../../components/data-center/page-four.vue"
+	import analyse from "../../components/data-center/analyse.vue"
 	export default {
 		components: {
-			PageOne,
-			PageTwo,
-			PageThree,
-			PageFour,
+			analyse,
 		},
 		data() {
 			return {
-				tabList: Config.TABLIST, //标签头
-				currentTab: 'PAGE_ONE',
 				progress_bar_width: 16,
 				progress_text_top: 0,
 				isPC: false,
@@ -59,9 +29,6 @@
 			};
 		},
 		methods: {
-			switchTab(tab) {
-				this.currentTab = tab
-			},
 			//获取设备信息
 			async getTelephoneInfo() {
 				var telephoneInfo = await Common.getTelephoneInfo();

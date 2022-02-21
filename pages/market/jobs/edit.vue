@@ -1,11 +1,11 @@
 <template>
   <view class="uni-container">
-    <uni-forms ref="form" :value="formData" validateTrigger="bind">
-      <uni-forms-item name="role_id" label="唯一ID" required>
-        <uni-easyinput placeholder="角色唯一标识，不可修改，不允许重复" v-model="formData.role_id" trim="both" disabled></uni-easyinput>
+    <uni-forms ref="form" :value="formData" validateTrigger="bind"  :rules="rules">
+      <uni-forms-item name="role_id" label="岗位标识" required>
+        <uni-easyinput placeholder="岗位标识" v-model="formData.role_id" trim="both" disabled></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="role_name" label="名称" required>
-        <uni-easyinput placeholder="角色名称" v-model="formData.role_name" trim="both"></uni-easyinput>
+      <uni-forms-item name="role_name" label="岗位名称" required>
+        <uni-easyinput placeholder="岗位名称" v-model="formData.role_name" trim="both"></uni-easyinput>
       </uni-forms-item>
       <uni-forms-item name="permission" label="权限" class="flex-center-x">
         <uni-data-checkbox :multiple="true" v-model="formData.permission" collection="uni-id-permissions" field="permission_name as text, permission_id as value"></uni-data-checkbox>

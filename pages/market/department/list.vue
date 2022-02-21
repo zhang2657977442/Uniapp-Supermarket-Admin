@@ -26,14 +26,14 @@
 					type="selection" @selection-change="selectionChange">
 					<uni-tr>
 						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'tagid')"
-							sortable @sort-change="sortChange($event, 'tagid')">部门id</uni-th>
+							sortable @sort-change="sortChange($event, 'tagid')">部门标识</uni-th>
 						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'name')"
 							sortable @sort-change="sortChange($event, 'name')">部门名称</uni-th>
 						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'description')"
 							sortable @sort-change="sortChange($event, 'description')">部门描述</uni-th>
 						<uni-th align="center" filter-type="timestamp"
 							@filter-change="filterChange($event, 'create_date')" sortable
-							@sort-change="sortChange($event, 'create_date')">创建时间</uni-th>
+							@sort-change="sortChange($event, 'create_date')">设立时间</uni-th>
 						<uni-th align="center">操作</uni-th>
 					</uni-tr>
 					<uni-tr v-for="(item,index) in data" :key="index">

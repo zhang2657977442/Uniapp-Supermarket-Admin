@@ -1,6 +1,6 @@
 <template>
   <view class="uni-container">
-    <uni-forms ref="form" :value="formData" validateTrigger="bind">
+    <uni-forms ref="form" :value="formData" validateTrigger="bind" :rules="rules">
       <uni-forms-item name="category_id" label="">
         <uni-easyinput placeholder="分类 id，参考`opendb-mall-categories`表" v-model="formData.category_id"></uni-easyinput>
       </uni-forms-item>

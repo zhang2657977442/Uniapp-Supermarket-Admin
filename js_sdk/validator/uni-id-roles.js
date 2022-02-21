@@ -11,7 +11,7 @@ const validator = {
         "format": "string"
       }
     ],
-    "label": "唯一ID"
+    "label": "岗位标识"
   },
   "role_name": {
     "rules": [
@@ -22,7 +22,7 @@ const validator = {
         "format": "string"
       }
     ],
-    "label": "名称"
+    "label": "岗位名称"
   },
   "permission": {
     "rules": [

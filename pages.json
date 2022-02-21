@@ -7,7 +7,10 @@
 			}
 		},
 		{
-			"path": "pages/index/index"
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "快速结账"
+			}
 		}, {
 			"path": "pages/login/login",
 			"style": {
@@ -34,72 +37,72 @@
 	"pages":[{
 		    "path": "goods/add",
 		    "style": {
-		        "navigationBarTitleText": "新增"
+		        "navigationBarTitleText": "新增商品"
 		    }
 		}
 		,{
 		    "path": "goods/edit",
 		    "style": {
-		        "navigationBarTitleText": "编辑"
+		        "navigationBarTitleText": "编辑商品"
 		    }
 		}
 		,{
 		    "path": "goods/list",
 		    "style": {
-		        "navigationBarTitleText": "列表"
+		        "navigationBarTitleText": "商品列表"
 		    }
 		},{
     "path": "sku/add",
     "style": {
-        "navigationBarTitleText": "新增"
+        "navigationBarTitleText": "新增sku"
     }
 }
 ,{
     "path": "sku/edit",
     "style": {
-        "navigationBarTitleText": "编辑"
+        "navigationBarTitleText": "编辑sku"
     }
 }
 ,{
     "path": "sku/list",
     "style": {
-        "navigationBarTitleText": "列表"
+        "navigationBarTitleText": "sku管理"
     }
 }
 ,{
     "path": "order/add",
     "style": {
-        "navigationBarTitleText": "新增"
+        "navigationBarTitleText": "新增账单"
     }
 }
 ,{
     "path": "order/edit",
     "style": {
-        "navigationBarTitleText": "编辑"
+        "navigationBarTitleText": "编辑账单"
     }
 }
 ,{
     "path": "order/list",
     "style": {
-        "navigationBarTitleText": "列表"
+        "navigationBarTitleText": "账单管理"
     }
 }
 ,{
     "path": "categories/add",
     "style": {
-        "navigationBarTitleText": "新增"
+        "navigationBarTitleText": "新增类别"
     }
 }
 ,{
     "path": "categories/edit",
     "style": {
-        "navigationBarTitleText": "编辑"
+        "navigationBarTitleText": "编辑类别"
     }
 }
 ,{
     "path": "categories/list",
     "style": {
-        "navigationBarTitleText": "列表"
+        "navigationBarTitleText": "类别管理"
     }
 },
 {
@@ -116,58 +119,58 @@
 		}, {
 			"path": "permission/edit",
 			"style": {
-				"navigationBarTitleText": "修改权限",
+				"navigationBarTitleText": "编辑权限",
 				"navigationStyle": "default"
 			}
 		},
 		{
 			"path": "jobs/add",
 			"style": {
-				"navigationBarTitleText": "新增角色",
+				"navigationBarTitleText": "新增岗位",
 				"navigationStyle": "default"
 			}
 		}, {
 			"path": "jobs/edit",
 			"style": {
-				"navigationBarTitleText": "修改角色",
+				"navigationBarTitleText": "编辑岗位",
 				"navigationStyle": "default"
 			}
 		}, {
 			"path": "jobs/list",
 			"style": {
-				"navigationBarTitleText": "角色管理"
+				"navigationBarTitleText": "岗位管理"
 			}
 		}, {
 			"path": "employees/add",
 			"style": {
-				"navigationBarTitleText": "新增用户",
+				"navigationBarTitleText": "新增员工",
 				"navigationStyle": "default"
 			}
 		}, {
 			"path": "employees/edit",
 			"style": {
-				"navigationBarTitleText": "修改用户",
+				"navigationBarTitleText": "编辑员工",
 				"navigationStyle": "default"
 			}
 		}, {
 			"path": "employees/list",
 			"style": {
-				"navigationBarTitleText": "用户管理"
+				"navigationBarTitleText": "员工管理"
 			}
 		}, {
 			"path": "department/add",
 			"style": {
-				"navigationBarTitleText": "新增标签"
+				"navigationBarTitleText": "新增部门"
 			}
 		}, {
 			"path": "department/edit",
 			"style": {
-				"navigationBarTitleText": "修改标签"
+				"navigationBarTitleText": " 编辑部门"
 			}
 		}, {
 			"path": "department/list",
 			"style": {
-				"navigationBarTitleText": "标签管理"
+				"navigationBarTitleText": "部门管理"
 			}
 		}
 ]
@@ -214,17 +217,17 @@
 		{
 			"path": "log/add",
 			"style": {
-				"navigationBarTitleText": "新增"
+				"navigationBarTitleText": "新增日志"
 			}
 		}, {
 			"path": "log/edit",
 			"style": {
-				"navigationBarTitleText": "编辑"
+				"navigationBarTitleText": "编辑日志"
 			}
 		}, {
 			"path": "log/list",
 			"style": {
-				"navigationBarTitleText": "列表"
+				"navigationBarTitleText": "日志管理"
 			}
 		}
 		]

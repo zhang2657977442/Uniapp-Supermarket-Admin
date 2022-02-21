@@ -10,7 +10,8 @@ const validator = {
       {
         "format": "string"
       }
-    ]
+    ],
+		"label": "用户id"
   },
   "ua": {
     "rules": [

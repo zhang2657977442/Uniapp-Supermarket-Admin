@@ -29,15 +29,15 @@
 					type="selection" @selection-change="selectionChange">
 					<uni-tr>
 						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'role_id')"
-							sortable @sort-change="sortChange($event, 'role_id')">唯一ID</uni-th>
+							sortable @sort-change="sortChange($event, 'role_id')">岗位标识</uni-th>
 						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'role_name')"
-							sortable @sort-change="sortChange($event, 'role_name')">名称</uni-th>
+							sortable @sort-change="sortChange($event, 'role_name')">岗位名称</uni-th>
 						<uni-th align="center">权限</uni-th>
 						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'comment')"
 							sortable @sort-change="sortChange($event, 'comment')">备注</uni-th>
 						<uni-th align="center" filter-type="timestamp"
 							@filter-change="filterChange($event, 'create_date')" sortable
-							@sort-change="sortChange($event, 'create_date')">创建时间</uni-th>
+							@sort-change="sortChange($event, 'create_date')">设立时间</uni-th>
 						<uni-th align="center">操作</uni-th>
 					</uni-tr>
 					<uni-tr v-for="(item,index) in data" :key="index">

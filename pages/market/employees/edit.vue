@@ -1,7 +1,7 @@
 <template>
 	<view class="uni-container">
 		<uni-forms ref="form" v-model="formData" :rules="rules" validateTrigger="bind" @submit="submit">
-			<uni-forms-item name="username" label="用户名" required>
+			<uni-forms-item name="username" label="员工名" required>
 				<uni-easyinput v-model="formData.username" :clearable="false" placeholder="请输入用户名" />
 			</uni-forms-item>
 			<uni-forms-item :name="showPassword ? 'password' : ''" label="重置密码">
@@ -10,10 +10,10 @@
 					<view slot="right" class="cancel-reset-password-btn" @click="trigger">取消</view>
 				</uni-easyinput>
 			</uni-forms-item>
-			<uni-forms-item name="role" label="角色列表" class="flex-center-x">
+			<uni-forms-item name="role" label="岗位" class="flex-center-x">
 				<uni-data-checkbox multiple :localdata="roles" v-model="formData.role" />
 			</uni-forms-item>
-			<uni-forms-item name="tags" label="用户标签" labelWidth="100" class="flex-center-x">
+			<uni-forms-item name="tags" label="所属部门" labelWidth="100" class="flex-center-x">
 				<uni-data-checkbox :multiple="true" v-model="formData.tags" collection="uni-id-tag"
 					field="tagid as value, name as text"></uni-data-checkbox>
 				<span class="link-btn" @click="gotoTagAdd">新增</span>
@@ -30,7 +30,7 @@
 			<uni-forms-item name="email" label="邮箱">
 				<uni-easyinput v-model="formData.email" :clearable="false" placeholder="请输入邮箱" />
 			</uni-forms-item>
-			<uni-forms-item name="status" label="用户状态">
+			<uni-forms-item name="status" label="员工状态">
 				<switch v-if="Number(formData.status) < 2" @change="binddata('status', $event.detail.value)" :checked="formData.status" />
 				<view v-else class="uni-form-item-empty">{{parseUserStatus(formData.status)}}</view>
 			</uni-forms-item>

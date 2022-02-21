@@ -337,7 +337,7 @@
 							mask: true
 						})
 						const checkAll = menus.length === pluginMenus.length
-						uniCloud.database().collection('opendb-admin-menus').add(menus).then(res => {
+						uniCloud.database().collection('menus').add(menus).then(res => {
 							this.init()
 							uni.showModal({
 								title: '提示',

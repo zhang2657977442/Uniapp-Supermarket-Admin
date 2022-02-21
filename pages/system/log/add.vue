@@ -1,22 +1,19 @@
 <template>
   <view class="uni-container">
-    <uni-forms ref="form" :value="formData" validateTrigger="bind">
-      <uni-forms-item name="user_id" label="" required>
-        <uni-easyinput placeholder="用户id，参考uni-id-users表" v-model="formData.user_id"></uni-easyinput>
+    <uni-forms ref="form" :value="formData" validateTrigger="bind" :rules="rules">
+      <uni-forms-item name="user_id" label="用户id" required>
+        <uni-easyinput placeholder="用户id" v-model="formData.user_id"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="ua" label="">
-        <uni-easyinput placeholder="userAgent" v-model="formData.ua"></uni-easyinput>
+      <uni-forms-item name="ua" label="用户代理">
+        <uni-easyinput placeholder="用户代理" v-model="formData.ua"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="device_uuid" label="">
-        <uni-easyinput placeholder="设备唯一标识(需要加密存储)" v-model="formData.device_uuid"></uni-easyinput>
-      </uni-forms-item>
-      <uni-forms-item name="type" label="">
+      <uni-forms-item name="type" label="类型">
         <uni-data-checkbox v-model="formData.type" :localdata="formOptions.type_localdata"></uni-data-checkbox>
       </uni-forms-item>
-      <uni-forms-item name="state" label="">
+      <uni-forms-item name="state" label="状态">
         <uni-easyinput placeholder="结果：0 失败、1 成功" type="number" v-model="formData.state"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="ip" label="">
+      <uni-forms-item name="ip" label="ip地址">
         <uni-easyinput placeholder="ip地址" v-model="formData.ip"></uni-easyinput>
       </uni-forms-item>
       <view class="uni-button-group">
@@ -51,7 +48,6 @@
       let formData = {
         "user_id": "",
         "ua": "",
-        "device_uuid": "",
         "type": "",
         "state": null,
         "ip": ""

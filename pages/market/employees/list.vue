@@ -15,7 +15,7 @@
 				<button class="uni-button" type="warn" size="mini" :disabled="!selectedIndexs.length"
 					@click="delTable">{{$t('common.button.batchDelete')}}</button>
 				<button class="uni-button" type="primary" size="mini" :disabled="!selectedIndexs.length"
-					@click="openTagsPopup">标签管理</button>
+					@click="openTagsPopup">部门管理</button>
 				<!-- #ifdef H5 -->
 				<download-excel class="hide-on-phone" :fields="exportExcel.fields" :data="exportExcelData"
 					:type="exportExcel.type" :name="exportExcel.filename">
@@ -43,7 +43,7 @@
 							sortable @sort-change="sortChange($event, 'email')">邮箱</uni-th>
 						<uni-th align="center">岗位</uni-th>
 						<uni-th align="center" filter-type="select" :filter-data="tagsData"
-							@filter-change="filterChange($event, 'tags')">所在部门</uni-th>
+							@filter-change="filterChange($event, 'tags')">所属部门</uni-th>
 						<uni-th align="center">可登录应用</uni-th>
 						<uni-th align="center" filter-type="timestamp"
 							@filter-change="filterChange($event, 'register_date')" sortable
@@ -103,7 +103,7 @@
 		<!-- #endif -->
 		<uni-popup ref="tagsPopup" type="center">
 			<view class="tags-manager--x">
-				<view class="tags-manager--header mb">管理标签</view>
+				<view class="tags-manager--header mb">部门管理</view>
 				<uni-data-checkbox ref="checkbox" v-model="managerTags" class="mb ml" :multiple="true" collection="uni-id-tag"
 					field="tagid as value, name as text"></uni-data-checkbox>
 				<view class="uni-group">

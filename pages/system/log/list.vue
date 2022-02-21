@@ -8,8 +8,8 @@
 			<view class="uni-group">
 				<input class="uni-search" type="text" v-model="query" @confirm="search" placeholder="请输入搜索内容" />
 				<button class="uni-button" type="default" size="mini" @click="search">搜索</button>
-				<button class="uni-button" type="default" size="mini" @click="navigateTo('./add')">新增</button>
-				<button class="uni-button" type="default" size="mini" :disabled="!selectedIndexs.length"
+				<button class="uni-button" type="primary" size="mini" @click="navigateTo('./add')">新增</button>
+				<button class="uni-button" type="warn" size="mini" :disabled="!selectedIndexs.length"
 					@click="delTable">批量删除</button>
 				<download-excel class="hide-on-phone" :fields="exportExcel.fields" :data="exportExcelData"
 					:type="exportExcel.type" :name="exportExcel.filename">
@@ -26,15 +26,13 @@
 					type="selection" @selection-change="selectionChange">
 					<uni-tr>
 						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'user_id')"
-							sortable @sort-change="sortChange($event, 'user_id')">user_id</uni-th>
+							sortable @sort-change="sortChange($event, 'user_id')">用户id</uni-th>
 						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'ua')" sortable
-							@sort-change="sortChange($event, 'ua')">ua</uni-th>
-						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'device_uuid')"
-							sortable @sort-change="sortChange($event, 'device_uuid')">device_uuid</uni-th>
+							@sort-change="sortChange($event, 'ua')">用户代理</uni-th>
 						<uni-th align="center" filter-type="select" :filter-data="options.filterData.type_localdata"
-							@filter-change="filterChange($event, 'type')">type</uni-th>
+							@filter-change="filterChange($event, 'type')">类型</uni-th>
 						<uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'state')"
-							sortable @sort-change="sortChange($event, 'state')">state</uni-th>
+							sortable @sort-change="sortChange($event, 'state')">状态</uni-th>
 						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'ip')" sortable
 							@sort-change="sortChange($event, 'ip')">ip</uni-th>
 						<uni-th align="center">操作</uni-th>
@@ -42,9 +40,8 @@
 					<uni-tr v-for="(item,index) in data" :key="index">
 						<uni-td align="center">{{item.user_id}}</uni-td>
 						<uni-td align="center">{{item.ua}}</uni-td>
-						<uni-td align="center">{{item.device_uuid}}</uni-td>
 						<uni-td align="center">{{options.type_valuetotext[item.type]}}</uni-td>
-						<uni-td align="center">{{item.state}}</uni-td>
+						<uni-td align="center">{{item.state===1?'成功':'失败'}}</uni-td>
 						<uni-td align="center">{{item.ip}}</uni-td>
 						<uni-td align="center">
 							<view class="uni-group">

@@ -1,16 +1,16 @@
 <template>
 	<view class="uni-container">
 		<uni-forms ref="form" v-model="formData" :rules="rules" validateTrigger="bind" @submit="submit">
-			<uni-forms-item name="username" label="用户名" required>
+			<uni-forms-item name="username" label="员工名" required>
 				<uni-easyinput v-model="formData.username" :clearable="false" placeholder="请输入用户名" />
 			</uni-forms-item>
 			<uni-forms-item name="password" label="初始密码" required>
 				<uni-easyinput v-model="formData.password" :clearable="false" placeholder="请输入初始密码" />
 			</uni-forms-item>
-			<uni-forms-item name="role" label="角色列表" class="flex-center-x">
+			<uni-forms-item name="role" label="岗位" class="flex-center-x">
 				<uni-data-checkbox multiple :localdata="roles" v-model="formData.role" />
 			</uni-forms-item>
-			<uni-forms-item name="tags" label="用户标签" labelWidth="100" class="flex-center-x">
+			<uni-forms-item name="tags" label="所属部门" labelWidth="100" class="flex-center-x">
 				<uni-data-checkbox ref="checkbox" :multiple="true" v-model="formData.tags" collection="uni-id-tag"
 					field="tagid as value, name as text"></uni-data-checkbox>
 				<span class="link-btn" @click="gotoTagAdd">新增</span>
@@ -27,7 +27,7 @@
 			<uni-forms-item name="email" label="邮箱">
 				<uni-easyinput v-model="formData.email" :clearable="false" placeholder="请输入邮箱" />
 			</uni-forms-item>
-			<uni-forms-item name="status" label="是否启用">
+			<uni-forms-item name="status" label="员工状态">
 				<switch @change="binddata('status', $event.detail.value)" :checked="formData.status" />
 			</uni-forms-item>
 			<view class="uni-button-group">

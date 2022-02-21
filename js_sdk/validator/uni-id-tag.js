@@ -11,7 +11,7 @@ const validator = {
         "format": "string"
       }
     ],
-    "label": "标签的tagid"
+    "label": "部门标识"
   },
   "name": {
     "rules": [
@@ -22,7 +22,7 @@ const validator = {
         "format": "string"
       }
     ],
-    "label": "标签名称"
+    "label": "部门名称"
   },
   "description": {
     "rules": [
@@ -30,7 +30,7 @@ const validator = {
         "format": "string"
       }
     ],
-    "label": "标签描述"
+    "label": "部门描述"
   }
 }
 
