@@ -116,10 +116,10 @@
 			"title": "角色",
 			"description": "用户角色",
 			"enum": {
-				"collection": "uni-id-roles",
+				"collection": "market-jobs",
 				"field": "role_id as value, role_name as text"
 			},
-			"foreignKey": "uni-id-roles.role_id",
+			"foreignKey": "market-jobs.role_id",
 			"permission": {
 				"write": false
 			}
@@ -129,10 +129,10 @@
 			"title": "可登陆应用appid",
 			"description": "可登陆应用appid",
 			"enum": {
-				"collection": "opendb-app-list",
+				"collection": "system-app",
 				"field": "appid as value, name as text"
 			},
-			"foreignKey": "opendb-app-list.appid",
+			"foreignKey": "system-app.appid",
 			"permission": {
 				"write": false
 			}
@@ -142,10 +142,10 @@
 			"title": "用户标签tagid",
 			"description": "用户标签tagid",
 			"enum": {
-				"collection": "uni-id-tag",
+				"collection": "market-department",
 				"field": "tagid as value, name as text"
 			},
-			"foreignKey": "uni-id-tag.tagid",
+			"foreignKey": "market-department.tagid",
 			"permission": {
 				"write": false
 			}

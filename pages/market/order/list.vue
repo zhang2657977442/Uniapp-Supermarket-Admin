@@ -67,7 +67,7 @@
 </template>
 
 <script>
-  import { enumConverter, filterToWhere } from '../../../js_sdk/validator/opendb-mall-order.js';
+  import { enumConverter, filterToWhere } from '../../../js_sdk/validator/market-order.js';
 
   const db = uniCloud.database()
   // 表查询配置
@@ -85,7 +85,7 @@
   export default {
     data() {
       return {
-        collectionList: "opendb-mall-order",
+        collectionList: "market-order",
         query: '',
         where: '',
         orderby: dbOrderBy,

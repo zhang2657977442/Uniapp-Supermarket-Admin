@@ -20,7 +20,7 @@
 			</view>
 		</view>
 		<view class="uni-container">
-			<unicloud-db ref="udb" collection="uni-id-roles,uni-id-permissions"
+			<unicloud-db ref="udb" collection="market-jobs,market-permissions"
 				field="role_id,role_name,permission{permission_name},comment,create_date" :where="where"
 				page-data="replace" :orderby="orderby" :getcount="true" :page-size="options.pageSize"
 				:page-current="options.pageCurrent" v-slot:default="{data,pagination,loading,error,options}"
@@ -83,7 +83,7 @@
 	import {
 		enumConverter,
 		filterToWhere
-	} from '@/js_sdk/validator/uni-id-roles.js';
+	} from '@/js_sdk/validator/market-jobs.js';
 
 	const db = uniCloud.database()
 	// 表查询配置

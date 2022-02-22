@@ -8,7 +8,7 @@
         <uni-easyinput placeholder="岗位名称" v-model="formData.role_name" trim="both"></uni-easyinput>
       </uni-forms-item>
       <uni-forms-item name="permission" label="权限" class="flex-center-x">
-        <uni-data-checkbox :multiple="true" v-model="formData.permission" collection="uni-id-permissions" field="permission_name as text, permission_id as value"></uni-data-checkbox>
+        <uni-data-checkbox :multiple="true" v-model="formData.permission" collection="market-permissions" field="permission_name as text, permission_id as value"></uni-data-checkbox>
       </uni-forms-item>
       <uni-forms-item name="comment" label="备注">
         <uni-easyinput type="textarea" placeholder="备注" v-model="formData.comment" trim="both"></uni-easyinput>
@@ -24,11 +24,11 @@
 </template>
 
 <script>
-  import { validator } from '@/js_sdk/validator/uni-id-roles.js';
+  import { validator } from '@/js_sdk/validator/market-jobs.js';
 
   const db = uniCloud.database();
   const dbCmd = db.command;
-  const dbCollectionName = 'uni-id-roles';
+  const dbCollectionName = 'market-jobs';
 
   function getValidator(fields) {
     let result = {}

@@ -22,7 +22,7 @@
 			</view>
 		</view>
 		<view class="uni-container">
-			<unicloud-db ref="udb" collection="opendb-app-list" field="appid,name,description,create_date"
+			<unicloud-db ref="udb" collection="system-app" field="appid,name,description,create_date"
 				:where="where" page-data="replace" :orderby="orderby" :getcount="true" :page-size="options.pageSize"
 				:page-current="options.pageCurrent" v-slot:default="{data,pagination,loading,error,options}"
 				:options="options" loadtime="manual" @load="onqueryload">
@@ -87,7 +87,7 @@
 	import {
 		enumConverter,
 		filterToWhere
-	} from '../../../js_sdk/validator/opendb-app-list.js';
+	} from '../../../js_sdk/validator/system-app.js';
 	import {
 		mapState
 	} from 'vuex'
@@ -179,7 +179,7 @@
 			},
 			addCurrentAppid(app) {
 				// 使用 clientDB 提交当前 appid
-				db.collection('opendb-app-list').add(app).then((res) => {
+				db.collection('system-app').add(app).then((res) => {
 					this.loadData()
 					setTimeout(() => {
 						uni.showModal({

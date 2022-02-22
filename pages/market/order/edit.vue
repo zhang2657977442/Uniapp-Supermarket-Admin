@@ -33,11 +33,11 @@
 </template>
 
 <script>
-  import { validator } from '../../../js_sdk/validator/opendb-mall-order.js';
+  import { validator } from '../../../js_sdk/validator/market-order.js';
 
   const db = uniCloud.database();
   const dbCmd = db.command;
-  const dbCollectionName = 'opendb-mall-order';
+  const dbCollectionName = 'market-order';
 
   function getValidator(fields) {
     let result = {}
@@ -53,14 +53,10 @@
     data() {
       let formData = {
         "order_guid": "",
-        "user_id": "",
         "good_id": "",
-        "platform_type": null,
         "total_cash": null,
         "discount_cash": null,
-        "is_promotion": null,
         "payment_date": null,
-        "cancel_date": null,
         "create_date": null
       }
       return {

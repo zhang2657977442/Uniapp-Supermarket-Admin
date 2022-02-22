@@ -26,8 +26,8 @@
     },
     "category_id": {
       "bsonType": "string",
-      "description": "分类 id，参考`opendb-mall-categories`表",
-      "foreignKey": "opendb-mall-categories._id"
+      "description": "分类 id",
+      "foreignKey": "market-categories._id"
     },
     "goods_sn": {
       "bsonType": "string",

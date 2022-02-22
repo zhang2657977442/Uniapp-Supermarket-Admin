@@ -2,7 +2,7 @@
   <view class="uni-container">
     <uni-forms ref="form" :value="formData" validateTrigger="bind" :rules="rules">
       <uni-forms-item name="category_id" label="">
-        <uni-easyinput placeholder="分类 id，参考`opendb-mall-categories`表" v-model="formData.category_id"></uni-easyinput>
+        <uni-easyinput placeholder="分类 id" v-model="formData.category_id"></uni-easyinput>
       </uni-forms-item>
       <uni-forms-item name="goods_sn" label="货号" required>
         <uni-easyinput placeholder="商品的唯一货号" v-model="formData.goods_sn" trim="both"></uni-easyinput>

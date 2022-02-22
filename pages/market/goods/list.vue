@@ -24,9 +24,8 @@
             <uni-th align="center" sortable @sort-change="sortChange($event, '_id')">商品id</uni-th>
             <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'goods_sn')" sortable @sort-change="sortChange($event, 'goods_sn')">货号</uni-th>
             <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'name')" sortable @sort-change="sortChange($event, 'name')">名称</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'keywords')" sortable @sort-change="sortChange($event, 'keywords')">关键字</uni-th>
             <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'goods_desc')" sortable @sort-change="sortChange($event, 'goods_desc')">详细描述</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'goods_thumb')" sortable @sort-change="sortChange($event, 'goods_thumb')">图片</uni-th>
+         <!--   <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'goods_thumb')" sortable @sort-change="sortChange($event, 'goods_thumb')">图片</uni-th> -->
             <!-- <uni-th align="center" sortable @sort-change="sortChange($event, 'goods_banner_imgs')">goods_banner_imgs</uni-th> -->
             <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'remain_count')" sortable @sort-change="sortChange($event, 'remain_count')">库存数量</uni-th>
             <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'month_sell_count')" sortable @sort-change="sortChange($event, 'month_sell_count')">月销量</uni-th>
@@ -47,9 +46,8 @@
             <uni-td align="center">{{item._id}}</uni-td>
             <uni-td align="center">{{item.goods_sn}}</uni-td>
             <uni-td align="center">{{item.name}}</uni-td>
-            <uni-td align="center">{{item.keywords}}</uni-td>
             <uni-td align="center">{{item.goods_desc}}</uni-td>
-            <uni-td align="center"><image :src="item.goods_thumb" mode=""></image></uni-td>
+        <!--    <uni-td align="center"><image :src="item.goods_thumb" mode=""></image></uni-td> -->
             <!-- <uni-td align="center">{{item.goods_banner_imgs}}</uni-td> -->
             <uni-td align="center">{{item.remain_count}}</uni-td>
             <uni-td align="center">{{item.month_sell_count}}</uni-td>

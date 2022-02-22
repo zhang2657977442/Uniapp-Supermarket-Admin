@@ -25,7 +25,7 @@
 			</view>
 		</view>
 		<view class="uni-container">
-			<unicloud-db ref="udb" collection="uni-id-users,uni-id-roles"
+			<unicloud-db ref="udb" collection="market-employess,market-jobs"
 				field="username,mobile,status,email,role{role_name},dcloud_appid,tags,register_date" :where="where"
 				page-data="replace" :orderby="orderby" :getcount="true" :page-size="options.pageSize"
 				:page-current="options.pageCurrent" v-slot:default="{data,pagination,loading,error,options}"
@@ -104,7 +104,7 @@
 		<uni-popup ref="tagsPopup" type="center">
 			<view class="tags-manager--x">
 				<view class="tags-manager--header mb">部门管理</view>
-				<uni-data-checkbox ref="checkbox" v-model="managerTags" class="mb ml" :multiple="true" collection="uni-id-tag"
+				<uni-data-checkbox ref="checkbox" v-model="managerTags" class="mb ml" :multiple="true" collection="market-department"
 					field="tagid as value, name as text"></uni-data-checkbox>
 				<view class="uni-group">
 					<button @click="managerMultiTag('add')" class="uni-button"
@@ -121,7 +121,7 @@
 	import {
 		enumConverter,
 		filterToWhere
-	} from '../../../js_sdk/validator/uni-id-users.js';
+	} from '../../../js_sdk/validator/market-employess.js';
 
 	const db = uniCloud.database()
 	// 表查询配置
@@ -356,7 +356,7 @@
 				})
 			},
 			loadTags() {
-				db.collection('uni-id-tag').limit(500).get().then(res => {
+				db.collection('market-department').limit(500).get().then(res => {
 					res.result.data.map(item => {
 						this.tags[item.tagid] = item.name
 					})

@@ -13,24 +13,24 @@
 		},
 		"tagid": {
 			"bsonType": "string",
-			"description": "标签tagid",
-			"label": "标签tagid",
+			"description": "部门标识",
+			"label": "部门标识",
 			"componentForEdit": {
 				"name": "uni-easyinput"
 			}
 		},
 		"name": {
 			"bsonType": "string",
-			"description": "标签名称",
-			"label": "标签名称",
+			"description": "部门名称",
+			"label": "部门名称",
 			"componentForEdit": {
 				"name": "uni-easyinput"
 			}
 		},
 		"description": {
 			"bsonType": "string",
-			"description": "标签描述",
-			"label": "标签描述",
+			"description": "部门描述",
+			"label": "部门描述",
 			"componentForEdit": {
 				"name": "textarea"
 			},
@@ -40,7 +40,7 @@
 		},
 		"create_date": {
 			"bsonType": "timestamp",
-			"label": "创建时间",
+			"label": "设立时间",
 			"forceDefaultValue": {
 				"$env": "now"
 			},

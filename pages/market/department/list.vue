@@ -18,7 +18,7 @@
 			</view>
 		</view>
 		<view class="uni-container">
-			<unicloud-db ref="udb" collection="uni-id-tag" field="tagid,name,description,create_date" :where="where"
+			<unicloud-db ref="udb" collection="market-department" field="tagid,name,description,create_date" :where="where"
 				page-data="replace" :orderby="orderby" :getcount="true" :page-size="options.pageSize"
 				:page-current="options.pageCurrent" v-slot:default="{data,pagination,loading,error,options}"
 				:options="options" loadtime="manual" @load="onqueryload">
@@ -47,7 +47,7 @@
 						</uni-td>
 						<uni-td align="center">
 							<view class="uni-group">
-								<button @click="navigateTo('../user/list?tagid='+item.tagid, false)" class="uni-button"
+								<button @click="navigateTo('../employees/list?tagid='+item.tagid, false)" class="uni-button"
 									size="mini" type="primary">成员</button>
 								<button @click="navigateTo('./edit?id='+item._id, false)" class="uni-button" size="mini"
 									type="primary">修改</button>
@@ -83,7 +83,7 @@
 	import {
 		enumConverter,
 		filterToWhere
-	} from '@/js_sdk/validator/uni-id-tag.js';
+	} from '@/js_sdk/validator/market-department.js';
 
 	const db = uniCloud.database()
 	// 表查询配置

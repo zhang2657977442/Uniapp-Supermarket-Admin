@@ -2,62 +2,47 @@
 
 
 const validator = {
-  "mobile": {
+  "create_date": {
     "rules": [
+      {
+        "required": true
+      },
+      {
+        "format": "timestamp"
+      },
+    ],
+	"label": "创建时间"
+  },
+  "goods_id": {
+    "rules": [
+      {
+        "required": true
+      },
       {
         "format": "string"
       }
-    ]
+    ],
+		"label": "商品ID"
   },
-  "email": {
+  "price": {
     "rules": [
       {
-        "format": "string"
-      }
-    ]
+        "required": true
+      },
+    ],
+	"label": "价格"
   },
-  "code": {
+  "stock": {
     "rules": [
       {
-        "format": "string"
-      }
-    ]
-  },
-  "type": {
-    "rules": [
-      {
-        "format": "string"
-      }
-    ]
-  },
-  "state": {
-    "rules": [
+        "required": true
+      },
       {
         "format": "int"
       }
-    ]
+    ],
+	"label": "库存"
   },
-  "ip": {
-    "rules": [
-      {
-        "format": "string"
-      }
-    ]
-  },
-  "created_at": {
-    "rules": [
-      {
-        "format": "timestamp"
-      }
-    ]
-  },
-  "expired_at": {
-    "rules": [
-      {
-        "format": "timestamp"
-      }
-    ]
-  }
 }
 
 const enumConverter = {}

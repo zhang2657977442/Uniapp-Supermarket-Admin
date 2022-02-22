@@ -27,11 +27,11 @@
 </template>
 
 <script>
-  import { validator } from '../../../js_sdk/validator/uni-id-log.js';
+  import { validator } from '../../../js_sdk/validator/system-log.js';
 
   const db = uniCloud.database();
   const dbCmd = db.command;
-  const dbCollectionName = 'uni-id-log';
+  const dbCollectionName = 'system-log';
 
   function getValidator(fields) {
     let result = {}

@@ -21,11 +21,11 @@
 </template>
 
 <script>
-  import { validator } from '../../../js_sdk/validator/opendb-app-list.js';
+  import { validator } from '../../../js_sdk/validator/system-app.js';
 
   const db = uniCloud.database();
   const dbCmd = db.command;
-  const dbCollectionName = 'opendb-app-list';
+  const dbCollectionName = 'system-app';
 
   function getValidator(fields) {
     let result = {}

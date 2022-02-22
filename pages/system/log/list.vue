@@ -66,7 +66,7 @@
 	import {
 		enumConverter,
 		filterToWhere
-	} from '../../../js_sdk/validator/uni-id-log.js';
+	} from '../../../js_sdk/validator/system-log.js';
 
 	const db = uniCloud.database()
 	// 表查询配置
@@ -84,7 +84,7 @@
 	export default {
 		data() {
 			return {
-				collectionList: "uni-id-log",
+				collectionList: "system-log",
 				query: '',
 				where: '',
 				orderby: dbOrderBy,

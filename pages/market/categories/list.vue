@@ -47,7 +47,7 @@
 </template>
 
 <script>
-  import { enumConverter, filterToWhere } from '../../../js_sdk/validator/opendb-mall-categories.js';
+  import { enumConverter, filterToWhere } from '../../../js_sdk/validator/market-categories.js';
 
   const db = uniCloud.database()
   // 表查询配置
@@ -65,7 +65,7 @@
   export default {
     data() {
       return {
-        collectionList: "opendb-mall-categories",
+        collectionList: "market-categories",
         query: '',
         where: '',
         orderby: dbOrderBy,

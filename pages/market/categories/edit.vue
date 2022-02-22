@@ -21,11 +21,11 @@
 </template>
 
 <script>
-  import { validator } from '../../../js_sdk/validator/opendb-mall-categories.js';
+  import { validator } from '../../../js_sdk/validator/market-categories.js';
 
   const db = uniCloud.database();
   const dbCmd = db.command;
-  const dbCollectionName = 'opendb-mall-categories';
+  const dbCollectionName = 'market-categories';
 
   function getValidator(fields) {
     let result = {}

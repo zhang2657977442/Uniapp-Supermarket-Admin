@@ -14,13 +14,13 @@
 				<uni-data-checkbox multiple :localdata="roles" v-model="formData.role" />
 			</uni-forms-item>
 			<uni-forms-item name="tags" label="所属部门" labelWidth="100" class="flex-center-x">
-				<uni-data-checkbox :multiple="true" v-model="formData.tags" collection="uni-id-tag"
+				<uni-data-checkbox :multiple="true" v-model="formData.tags" collection="market-department"
 					field="tagid as value, name as text"></uni-data-checkbox>
 				<span class="link-btn" @click="gotoTagAdd">新增</span>
 				<span class="link-btn" @click="gotoTagList" style="margin-left: 10px;">管理</span>
 			</uni-forms-item>
 			<uni-forms-item name="dcloud_appid" label="可登录应用" class="flex-center-x">
-				<uni-data-checkbox :multiple="true" v-model="formData.dcloud_appid" collection="opendb-app-list"
+				<uni-data-checkbox :multiple="true" v-model="formData.dcloud_appid" collection="system-app"
 					field="appid as value, name as text"></uni-data-checkbox>
 				<span class="link-btn" @click="gotoAppList">管理</span>
 			</uni-forms-item>
@@ -43,11 +43,11 @@
 </template>
 
 <script>
-	import { validator } from '@/js_sdk/validator/uni-id-users.js';
+	import { validator } from '@/js_sdk/validator/market-employess.js';
 
 	const db = uniCloud.database();
 	const dbCmd = db.command;
-	const dbCollectionName = 'uni-id-users';
+	const dbCollectionName = 'market-employess';
 
 	function getValidator(fields) {
 		let result = {}
@@ -213,7 +213,7 @@
 					})
 			},
 			loadroles() {
-				db.collection('uni-id-roles').limit(500).get().then(res => {
+				db.collection('market-jobs').limit(500).get().then(res => {
 					const roleIds = []
 					this.roles = res.result.data.map(item => {
 						roleIds.push(item.role_id)

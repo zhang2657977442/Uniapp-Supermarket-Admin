@@ -28,7 +28,7 @@
 				</view>
 			</view>
 			<view class="uni-container">
-				<unicloud-db ref="udb" @load="onqueryload" collection="opendb-admin-menus" :options="options"
+				<unicloud-db ref="udb" @load="onqueryload" collection="system-menus" :options="options"
 					:where="where" page-data="replace" :orderby="orderby" :getcount="true" :page-size="options.pageSize"
 					:page-current="options.pageCurrent" v-slot:default="{data,pagination,loading,error}">
 					<uni-table :loading="loading" class="table-pc" :emptyText="errMsg || $t('common.empty')" border

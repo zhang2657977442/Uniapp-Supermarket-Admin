@@ -21,7 +21,7 @@
 			</view>
 		</view>
 		<view class="uni-container">
-			<unicloud-db ref="udb" collection="uni-id-permissions"
+			<unicloud-db ref="udb" collection="market-permissions"
 				field="permission_id,permission_name,comment,create_date" :where="where" page-data="replace"
 				:orderby="orderby" :getcount="true" :page-size="options.pageSize" :page-current="options.pageCurrent"
 				v-slot:default="{data,pagination,loading,error,options}" :options="options" loadtime="manual"
@@ -84,7 +84,7 @@
 	import {
 		enumConverter,
 		filterToWhere
-	} from '@/js_sdk/validator/uni-id-permissions.js';
+	} from '@/js_sdk/validator/market-permissions.js';
 
 	const db = uniCloud.database()
 	// 表查询配置

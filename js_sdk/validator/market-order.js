@@ -12,17 +12,6 @@ const validator = {
 		],
 		"label": "编号"
 	},
-	"user_id": {
-		"rules": [
-
-			{
-				"format": "string"
-			}
-		],
-		"defaultValue": {
-			"$env": "uid"
-		}
-	},
 	"good_id": {
 		"rules": [{
 				"required": true
@@ -32,13 +21,6 @@ const validator = {
 			}
 		],
 		"label": "商品id"
-	},
-	"platform_type": {
-		"rules": [
-			{
-				"format": "int"
-			}
-		]
 	},
 	"total_cash": {
 		"rules": [{
@@ -56,17 +38,7 @@ const validator = {
 		}],
 		"defaultValue": 0
 	},
-	"is_promotion": {
-		"rules": [{
-			"format": "int"
-		}]
-	},
 	"payment_date": {
-		"rules": [{
-			"format": "timestamp"
-		}]
-	},
-	"cancel_date": {
 		"rules": [{
 			"format": "timestamp"
 		}]

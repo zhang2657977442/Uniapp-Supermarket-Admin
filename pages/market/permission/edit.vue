@@ -21,11 +21,11 @@
 </template>
 
 <script>
-  import { validator } from '@/js_sdk/validator/uni-id-permissions.js';
+  import { validator } from '@/js_sdk/validator/market-permissions.js';
 
   const db = uniCloud.database();
   const dbCmd = db.command;
-  const dbCollectionName = 'uni-id-permissions';
+  const dbCollectionName = 'market-permissions';
 
   function getValidator(fields) {
     let result = {}
