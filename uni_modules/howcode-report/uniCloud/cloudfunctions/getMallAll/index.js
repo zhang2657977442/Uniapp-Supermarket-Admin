@@ -1,7 +1,7 @@
 'use strict';
 const db = uniCloud.database()
 const categoriesCollection = db.collection("market-categories")
-const goodsCollection = db.collection("opendb-mall-goods")
+const goodsCollection = db.collection("market-goods")
 const orderCollection = db.collection("market-order")
 const skuCollection = db.collection("market-sku")
 

@@ -19,14 +19,14 @@
 		</view>
 		<view class="uni-container">
 			<unicloud-db ref="udb" :collection="collectionList"
-				field="create_date,goods_id,market_price,price,sku_name,stock,update_date" :where="where"
+				field="create_date,goods_id{name},market_price,price,sku_name,stock,update_date,name" :where="where"
 				page-data="replace" :orderby="orderby" :getcount="true" :page-size="options.pageSize"
 				:page-current="options.pageCurrent" v-slot:default="{data,pagination,loading,error,options}"
 				:options="options" loadtime="manual" @load="onqueryload">
 				<uni-table ref="table" :loading="loading" :emptyText="error.message || '没有更多数据'" border stripe
 					type="selection" @selection-change="selectionChange">
 					<uni-tr>
-						<uni-th align="center" sortable @sort-change="sortChange($event, 'goods_id')">商品id</uni-th>
+						<uni-th align="center" sortable @sort-change="sortChange($event, 'goods_id')">商品名称</uni-th>
 						<uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'price')"
 							sortable @sort-change="sortChange($event, 'price')">价格</uni-th>
 						<uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'stock')"
@@ -37,7 +37,7 @@
 						<uni-th align="center">操作</uni-th>
 					</uni-tr>
 					<uni-tr v-for="(item,index) in data" :key="index">
-						<uni-td align="center">{{item.goods_id}}</uni-td>
+						<uni-td align="center">{{item.goods_id[0].name}}</uni-td>
 						<uni-td align="center">{{item.price}}</uni-td>
 						<uni-td align="center">{{item.stock}}</uni-td>
 						<uni-td align="center">
@@ -84,7 +84,7 @@
 	export default {
 		data() {
 			return {
-				collectionList: "market-sku",
+				collectionList: "market-sku,market-goods",
 				query: '',
 				where: '',
 				orderby: dbOrderBy,

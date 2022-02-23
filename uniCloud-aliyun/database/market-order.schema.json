@@ -24,8 +24,8 @@
 		"good_id": {
 			"bsonType": "string",
 			"title": "商品id",
-			"description": "商品id，参考`uni-mall-goods`表",
-			"foreignKey": "opendb-mall-goods._id"
+			"description": "商品id，参考`market-goods`表",
+			"foreignKey": "market-goods._id"
 		},
 		"total_cash": {
 			"bsonType": "decimal",

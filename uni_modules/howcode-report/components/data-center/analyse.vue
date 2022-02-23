@@ -49,7 +49,7 @@
 				<view class="charts-box">
 					<qiun-data-charts 
 						type="pie"
-						collection="opendb-mall-goods"
+						collection="market-goods"
 						groupby="name as text,total_sell_count as value" 
 						where="category_id=='60616f1b4f2517000140c59b'"
 						:resshow="delayload" :canvas2d="isCanvas2d" canvasId="two_a"

@@ -16,7 +16,7 @@
       </view>
     </view>
     <view class="uni-container">
-      <unicloud-db ref="udb" :collection="collectionList" field="name,parent_id,sort" :where="where" page-data="replace"
+      <unicloud-db ref="udb" :collection="collectionList" field="name,parent_id{name},sort" :where="where" page-data="replace"
         :orderby="orderby" :getcount="true" :page-size="options.pageSize" :page-current="options.pageCurrent"
         v-slot:default="{data,pagination,loading,error,options}" :options="options" loadtime="manual" @load="onqueryload">
         <uni-table ref="table" :loading="loading" :emptyText="error.message || '没有更多数据'" border stripe type="selection" @selection-change="selectionChange">
@@ -28,7 +28,8 @@
           </uni-tr>
           <uni-tr v-for="(item,index) in data" :key="index">
             <uni-td align="center">{{item.name}}</uni-td>
-            <uni-td align="center">{{item.parent_id}}</uni-td>
+            <uni-td align="center" v-if="item.parent_id.length > 0">{{item.parent_id[0].name}}</uni-td>
+			<uni-td align="center" v-else>无</uni-td>
             <uni-td align="center">{{item.sort}}</uni-td>
             <uni-td align="center">
               <view class="uni-group">
@@ -65,7 +66,7 @@
   export default {
     data() {
       return {
-        collectionList: "market-categories",
+        collectionList: "market-categories,market-categories",
         query: '',
         where: '',
         orderby: dbOrderBy,

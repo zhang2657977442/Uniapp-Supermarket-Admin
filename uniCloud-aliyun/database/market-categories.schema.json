@@ -18,7 +18,8 @@
 		},
 		"parent_id": {
 			"bsonType": "string",
-			"description": "父ID，用于多级分类"
+			"description": "父ID，用于多级分类",
+			"foreignKey": "market-categories._id"
 		},
 		"sort": {
 			"bsonType": "int",

@@ -2,13 +2,6 @@
 
 
 const validator = {
-  "category_id": {
-    "rules": [
-      {
-        "format": "string"
-      }
-    ]
-  },
   "goods_sn": {
     "rules": [
       {
@@ -29,41 +22,26 @@ const validator = {
         "format": "string"
       }
     ],
-    "label": "名称"
+    "label": "商品名称"
   },
-  "keywords": {
+  "goods_pic": {
     "rules": [
+     {
+       "format": "file"
+     }
+    ],
+    "label": "商品图片"
+  },
+  "category_id": {
+    "rules": [
+  		{
+  		  "required": true
+  		},
       {
         "format": "string"
       }
     ],
-    "label": "关键字"
-  },
-  "goods_desc": {
-    "rules": [
-      {
-        "format": "string"
-      }
-    ],
-    "label": "详细描述"
-  },
-  "goods_thumb": {
-    "rules": [
-      {
-        "format": "string"
-      },
-      {
-        "pattern": "^(http://|https://|/|./|@/)\\S"
-      }
-    ],
-    "label": "缩略图地址"
-  },
-  "goods_banner_imgs": {
-    "rules": [
-      {
-        "format": "array"
-      }
-    ]
+	 "label": "类别"
   },
   "remain_count": {
     "rules": [
@@ -84,7 +62,8 @@ const validator = {
       {
         "format": "int"
       }
-    ]
+    ],
+	 "label": "月销量"
   },
   "total_sell_count": {
     "rules": [
@@ -94,17 +73,8 @@ const validator = {
       {
         "format": "int"
       }
-    ]
-  },
-  "comment_count": {
-    "rules": [
-      {
-        "required": true
-      },
-      {
-        "format": "int"
-      }
-    ]
+    ],
+	 "label": "总销量"
   },
   "is_real": {
     "rules": [
@@ -115,7 +85,7 @@ const validator = {
         "format": "bool"
       }
     ],
-    "label": "是否为实物"
+    "label": "是否实物"
   },
   "is_on_sale": {
     "rules": [
@@ -136,7 +106,8 @@ const validator = {
       {
         "format": "bool"
       }
-    ]
+    ],
+	 "label": "是否单销"
   },
   "is_best": {
     "rules": [
@@ -146,7 +117,8 @@ const validator = {
       {
         "format": "bool"
       }
-    ]
+    ],
+	 "label": "是否精品"
   },
   "is_new": {
     "rules": [
@@ -167,24 +139,19 @@ const validator = {
       {
         "format": "bool"
       }
-    ]
+    ] ,
+	"label": "是否热销"
   },
   "add_date": {
     "rules": [
+		{
+		  "required": true
+		},
       {
         "format": "timestamp"
       }
     ],
-    "defaultValue": {
-      "$env": "now"
-    }
-  },
-  "last_modify_date": {
-    "rules": [
-      {
-        "format": "timestamp"
-      }
-    ],
+	"label": "上架时间",
     "defaultValue": {
       "$env": "now"
     }

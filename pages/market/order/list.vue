@@ -16,14 +16,14 @@
       </view>
     </view>
     <view class="uni-container">
-      <unicloud-db ref="udb" :collection="collectionList" field="order_guid,user_id,good_id,platform_type,total_cash,discount_cash,is_promotion,payment_date,cancel_date,create_date" :where="where" page-data="replace"
+      <unicloud-db ref="udb" :collection="collectionList" field="order_guid,user_id,good_id{name},platform_type,total_cash,discount_cash,is_promotion,payment_date,cancel_date,create_date" :where="where" page-data="replace"
         :orderby="orderby" :getcount="true" :page-size="options.pageSize" :page-current="options.pageCurrent"
         v-slot:default="{data,pagination,loading,error,options}" :options="options" loadtime="manual" @load="onqueryload">
         <uni-table ref="table" :loading="loading" :emptyText="error.message || '没有更多数据'" border stripe type="selection" @selection-change="selectionChange">
           <uni-tr>
             <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'order_guid')" sortable @sort-change="sortChange($event, 'order_guid')">编号</uni-th>
             <!-- <uni-th align="center" sortable @sort-change="sortChange($event, 'user_id')">用户id</uni-th> -->
-            <uni-th align="center" sortable @sort-change="sortChange($event, 'good_id')">商品id</uni-th>
+            <uni-th align="center" sortable @sort-change="sortChange($event, 'good_id')">商品名称</uni-th>
             <!-- <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'platform_type')" sortable @sort-change="sortChange($event, 'platform_type')">platform_type</uni-th> -->
             <uni-th align="center" sortable @sort-change="sortChange($event, 'total_cash')">实付金额</uni-th>
             <uni-th align="center" sortable @sort-change="sortChange($event, 'discount_cash')">优惠金额</uni-th>
@@ -36,7 +36,7 @@
           <uni-tr v-for="(item,index) in data" :key="index">
             <uni-td align="center">{{item.order_guid}}</uni-td>
             <!-- <uni-td align="center">{{item.user_id}}</uni-td> -->
-            <uni-td align="center">{{item.good_id}}</uni-td>
+            <uni-td align="center">{{item.good_id[0].name}}</uni-td>
             <!-- <uni-td align="center">{{item.platform_type}}</uni-td> -->
             <uni-td align="center">{{item.total_cash}}</uni-td>
             <uni-td align="center">{{item.discount_cash}}</uni-td>
@@ -85,7 +85,7 @@
   export default {
     data() {
       return {
-        collectionList: "market-order",
+        collectionList: "market-order,market-goods",
         query: '',
         where: '',
         orderby: dbOrderBy,
