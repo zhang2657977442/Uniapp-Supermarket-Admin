@@ -27,16 +27,17 @@ const validator = {
 				"required": true
 			},
 			{
-				"format": "decimal"
+			  "format": "double"
 			}
 		],
 		"label": "实付金额"
 	},
 	"discount_cash": {
 		"rules": [{
-			"format": "decimal"
-		}],
-		"defaultValue": 0
+			  "format": "double"
+			}],
+		"defaultValue": 0,
+		"label": "优惠金额"
 	},
 	"payment_date": {
 		"rules": [{

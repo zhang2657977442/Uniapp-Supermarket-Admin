@@ -87,6 +87,7 @@
 	} from '@/js_sdk/validator/market-permissions.js';
 
 	const db = uniCloud.database()
+	
 	// 表查询配置
 	const dbOrderBy = 'create_date desc' // 排序字段
 	const dbSearchFields = ['permission_id', 'permission_name'] // 模糊搜索字段，支持模糊搜索的字段列表

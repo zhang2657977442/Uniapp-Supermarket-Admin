@@ -2,8 +2,8 @@
   <view>
     <view class="uni-header">
       <view class="uni-group">
-		<view class="uni-title">{{$t('goods.text.title')}}</view>
-        <view class="uni-sub-title"></view>
+	<!-- 	<view class="uni-title">{{$t('goods.text.title')}}</view>
+        <view class="uni-sub-title"></view> -->
       </view>
       <view class="uni-group">
         <input class="uni-search" type="text" v-model="query" @confirm="search" placeholder="请输入搜索内容" />
@@ -41,7 +41,8 @@
           <uni-tr v-for="(item,index) in data" :key="index">
             <uni-td align="center">{{item.goods_sn}}</uni-td>
             <uni-td align="center">{{item.name}}</uni-td>
-			  <uni-td align="center">{{item.category_id[0].name}}</uni-td>
+			  <uni-td v-if="item.category_id.length > 0" align="center">{{item.category_id[0].name}}</uni-td>
+			  <uni-td v-else align="center">{{item.category_id[0]}}</uni-td>
 			<uni-td align="center">
 			  <uni-file-picker :value="item.goods_pic" :file-mediatype="item.goods_pic && item.goods_pic.fileType" return-type="object" :imageStyles="imageStyles" readonly></uni-file-picker>
 			</uni-td>

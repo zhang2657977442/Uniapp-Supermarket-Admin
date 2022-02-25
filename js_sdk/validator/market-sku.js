@@ -29,6 +29,9 @@ const validator = {
       {
         "required": true
       },
+	  {
+	    "format": "double"
+	  }
     ],
 	"label": "价格"
   },

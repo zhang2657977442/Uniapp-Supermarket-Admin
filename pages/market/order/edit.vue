@@ -54,8 +54,8 @@
       let formData = {
         "order_guid": "",
         "good_id": "",
-        "total_cash": null,
-        "discount_cash": null,
+        "total_cash": 0,
+        "discount_cash": 0,
         "payment_date": null,
         "create_date": null
       }

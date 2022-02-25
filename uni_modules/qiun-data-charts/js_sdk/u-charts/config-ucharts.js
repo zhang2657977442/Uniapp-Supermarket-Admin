@@ -373,7 +373,7 @@ const cfu = {
 		},
 		"extra": {
 			"area": {
-				"type": "straight",
+				"type": "curve",
 				"opacity": 0.2,
 				"addLine": true,
 				"width": 2,

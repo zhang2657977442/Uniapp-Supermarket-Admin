@@ -3,7 +3,7 @@
 		{
 			"path": "uni_modules/howcode-report/pages/reportdemo/reportdemo",
 			"style": {
-				"navigationBarTitleText": "报表中心"
+				"navigationBarTitleText": "工作台"
 			}
 		},
 		{

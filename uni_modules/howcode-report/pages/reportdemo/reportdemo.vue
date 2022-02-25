@@ -30,20 +30,20 @@
 		},
 		methods: {
 			//获取设备信息
-			async getTelephoneInfo() {
-				var telephoneInfo = await Common.getTelephoneInfo();
-				let hasHeight = 0;
-				// 设置滚动高度
-				const query = wx.createSelectorQuery();
-				query.select('#tabBar').boundingClientRect();
-				query.exec(res => {
-					res.map((item, index) => {
-						hasHeight += item.height;
-					})
-					this.scrollHeight = (telephoneInfo.screenHeight - hasHeight - telephoneInfo
-						.statusBarHeight - 59) + 'px';
-				})
-			},
+			// async getTelephoneInfo() {
+			// 	var telephoneInfo = await Common.getTelephoneInfo();
+			// 	let hasHeight = 0;
+			// 	// 设置滚动高度
+			// 	const query = wx.createSelectorQuery();
+			// 	query.select('#tabBar').boundingClientRect();
+			// 	query.exec(res => {
+			// 		res.map((item, index) => {
+			// 			hasHeight += item.height;
+			// 		})
+			// 		this.scrollHeight = (telephoneInfo.screenHeight - hasHeight - telephoneInfo
+			// 			.statusBarHeight - 59) + 'px';
+			// 	})
+			// },
 		},
 		onLoad() {
 			// #ifdef H5
@@ -52,9 +52,6 @@
 			} else {
 				this.isPC = true
 			}
-			//#endif
-			//#ifndef H5
-			this.getTelephoneInfo();
 			//#endif
 			switch (uni.getSystemInfoSync().platform) {
 				case 'android':

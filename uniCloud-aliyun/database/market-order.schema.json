@@ -28,14 +28,12 @@
 			"foreignKey": "market-goods._id"
 		},
 		"total_cash": {
-			"bsonType": "decimal",
-			"description": "实付金额",
-			"trim": "both"
+			"bsonType": "Number",
+			"description": "实付金额"
 		},
 		"discount_cash": {
-			"bsonType": "decimal",
-			"description": "优惠金额",
-			"trim": "both"
+			"bsonType": "Number",
+			"description": "优惠金额"
 		},
 		"payment_date": {
 			"bsonType": "timestamp",
@@ -45,9 +43,7 @@
 		"create_date": {
 			"bsonType": "timestamp",
 			"description": "创建时间",
-			"forceDefaultValue": {
-				"$env": "now"
-			}
+			"trim": "both"
 		}
 	}
 }

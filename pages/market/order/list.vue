@@ -2,8 +2,8 @@
   <view>
     <view class="uni-header">
       <view class="uni-group">
-       	<view class="uni-title">{{$t('order.text.title')}}</view>
-        <view class="uni-sub-title"></view>
+      <!-- 	<view class="uni-title">{{$t('order.text.title')}}</view>
+        <view class="uni-sub-title"></view> -->
       </view>
       <view class="uni-group">
         <input class="uni-search" type="text" v-model="query" @confirm="search" placeholder="请输入搜索内容" />
@@ -22,31 +22,22 @@
         <uni-table ref="table" :loading="loading" :emptyText="error.message || '没有更多数据'" border stripe type="selection" @selection-change="selectionChange">
           <uni-tr>
             <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'order_guid')" sortable @sort-change="sortChange($event, 'order_guid')">编号</uni-th>
-            <!-- <uni-th align="center" sortable @sort-change="sortChange($event, 'user_id')">用户id</uni-th> -->
-            <uni-th align="center" sortable @sort-change="sortChange($event, 'good_id')">商品名称</uni-th>
-            <!-- <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'platform_type')" sortable @sort-change="sortChange($event, 'platform_type')">platform_type</uni-th> -->
+            <uni-th align="center">商品名称</uni-th>
             <uni-th align="center" sortable @sort-change="sortChange($event, 'total_cash')">实付金额</uni-th>
             <uni-th align="center" sortable @sort-change="sortChange($event, 'discount_cash')">优惠金额</uni-th>
-            <!-- <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'is_promotion')" sortable @sort-change="sortChange($event, 'is_promotion')">is_promotion</uni-th> -->
             <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'payment_date')" sortable @sort-change="sortChange($event, 'payment_date')">支付时间</uni-th>
-            <!-- <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'cancel_date')" sortable @sort-change="sortChange($event, 'cancel_date')">cancel_date</uni-th> -->
             <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'create_date')" sortable @sort-change="sortChange($event, 'create_date')">创建时间</uni-th>
             <uni-th align="center">操作</uni-th>
           </uni-tr>
           <uni-tr v-for="(item,index) in data" :key="index">
             <uni-td align="center">{{item.order_guid}}</uni-td>
-            <!-- <uni-td align="center">{{item.user_id}}</uni-td> -->
-            <uni-td align="center">{{item.good_id[0].name}}</uni-td>
-            <!-- <uni-td align="center">{{item.platform_type}}</uni-td> -->
+            <uni-td v-if="item.good_id.length > 0" align="center">{{item.good_id[0].name}}</uni-td>
+			<uni-td v-else align="center">{{item.good_id[0]}}</uni-td>
             <uni-td align="center">{{item.total_cash}}</uni-td>
             <uni-td align="center">{{item.discount_cash}}</uni-td>
-            <!-- <uni-td align="center">{{item.is_promotion}}</uni-td> -->
             <uni-td align="center">
               <uni-dateformat :threshold="[0, 0]" :date="item.payment_date"></uni-dateformat>
             </uni-td>
-            <!-- <uni-td align="center">
-              <uni-dateformat :threshold="[0, 0]" :date="item.cancel_date"></uni-dateformat>
-            </uni-td> -->
             <uni-td align="center">
               <uni-dateformat :threshold="[0, 0]" :date="item.create_date"></uni-dateformat>
             </uni-td>

@@ -120,6 +120,9 @@
 			// #ifdef MP
 			let menuButtonInfo = uni.getMenuButtonBoundingClientRect()
 			this.mpCapsule = menuButtonInfo.width
+			this.$nextTick(() => {
+				this.changeLanguage('zh-Hans')
+			})
 			// #endif
 
 			// 沉余代码，临时处理 uni-datetime-picker 国际化不生效的问题
@@ -350,7 +353,7 @@
 		top: 1px;
 		margin-left: -6px;
 		border-top-width: 0;
-		border-bottom-color: #fff;
+		border-bottom-color: #001529;
 	}
 
 	/* 大屏时，隐藏的内容 */
@@ -393,11 +396,11 @@
 		/* #ifndef H5 */
 		top: 85px;
 		/* #endif */
-		background-color: #fff;
+		background-color: #001529;
 		z-index: 999;
 		padding: 5px 15px;
 		margin: 5px 0;
-		background-color: #fff;
+		background-color: #001529;
 		border: 1px solid #ebeef5;
 		border-radius: 4px;
 		box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);

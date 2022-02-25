@@ -1,7 +1,8 @@
 <template>
 	<view class="login-box">
 		<view class="admin-logo">
-			<image :src="logo" mode="heightFix"></image>
+			<image :src="logo" mode="heightFix" style="margin-bottom: 30rpx;"></image>
+			<view class="uni-title">Supermarket Admin</view>
 		</view>
 		<view class="uni-header no-padding">
 			<view class="uni-title">{{$t('login.text.title')}}</view>
@@ -297,8 +298,10 @@
 
 	.admin-logo {
 		display: flex;
+		flex-direction: column;
+		align-items: center;
 		justify-content: center;
-		margin-bottom: 30px;
+		margin-bottom: 20px;
 	}
 
 	.admin-logo image {

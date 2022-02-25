@@ -2,8 +2,8 @@
   <view>
     <view class="uni-header">
       <view class="uni-group">
-       	<view class="uni-title">{{$t('categories.text.title')}}</view>
-        <view class="uni-sub-title"></view>
+       <!-- 	<view class="uni-title">{{$t('categories.text.title')}}</view>
+        <view class="uni-sub-title"></view> -->
       </view>
       <view class="uni-group">
         <input class="uni-search" type="text" v-model="query" @confirm="search" placeholder="请输入搜索内容" />
