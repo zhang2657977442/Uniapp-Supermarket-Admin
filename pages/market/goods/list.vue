@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <view class="fix-top-window">
     <view class="uni-header">
       <view class="uni-group">
 	<!-- 	<view class="uni-title">{{$t('goods.text.title')}}</view>

@@ -5,35 +5,17 @@
 				<!--数据进度条-->
 				<view v-if="goodsProgress.length > 0" class="progress">
 					<view class="title">销售前5榜单</view>
-					<progress-bar
-						:isPC="isPC"
-						:isRank="isRank"
-						:content="goodsProgress"
-						@updateRanking="updateRanking"
-					/>
+					<progress-bar :isPC="isPC" :isRank="isRank" :content="goodsProgress" @updateRanking="updateRanking"/>
 				</view>
 			</view>
 			<view class="split_line"></view>
-			<view class="split_line"></view>
 
 			<view class="friend_operate">
-				<view class="title">数据概览</view>
+				<view class="title">统计概览</view>
 				<view class="progress_circle">
-					<view
-						v-for="(item, index) in CircleData"
-						:key="index"
-						:class="['progress_block', 'block_' + index]"
-					>
+					<view v-for="(item, index) in CircleData" :key="index" :class="['progress_block', 'block_' + index]">
 						<view class="name">{{ item.series[0].name }}</view>
 						<view class="value">{{ item.series[0].value }}</view>
-						<!-- 						<view class="charts-box arcbar" style="height: 180rpx;width: 60%;">
-							<qiun-data-charts type="arcbar" :chartData="item" :canvasId="'four_a_'+index" :canvas2d="isCanvas2d"
-								:resshow="delayload"
-								:inScrollView="true"
-								:pageScrollTop="pageScrollTop"
-								:ontouch="true"
-								:opts="{title:{name:item.series[0].precent,color:item.series[0].color,fontSize:15},subtitle:{name:'',color:'#666666',fontSize:12},extra:{arcbar:{backgroundColor:item.series[0].backgroundColor}}}" />
-						</view> -->
 						<view class="planet">
 							<view class="planet_shadow"></view>
 							<view class="crater1"></view>
@@ -52,16 +34,21 @@
 
 				<view class="title">
 					销售对比
-					<text class="font-middle">(月销售)</text>
+					<text class="font-middle">(日销售)</text>
 				</view>
-				<text-block :isPC="isPC" :content="salePlatform"></text-block>
 				<view v-if="salePlatformMix" class="charts-box" style="height: 300px;">
-					<qiun-data-charts type="area" :opts="{yAxis:{data:[{position: 'left',title: '销售额/元',min:0}]}}"
-					:chartData="salePlatformMix" :resshow="delayload" canvasId="two_b" :canvas2d="isCanvas2d"
-					:inScrollView="true" :pageScrollTop="pageScrollTop" :ontouch="true"/>
+					<qiun-data-charts
+						type="area"
+						:opts="{ yAxis: { data: [{ position: 'left', title: '销售额/元', min: 0 }] } }"
+						:chartData="salePlatformMix"
+						:resshow="delayload"
+						canvasId="two_b"
+						:canvas2d="isCanvas2d"
+						:inScrollView="true"
+						:pageScrollTop="pageScrollTop"
+						:ontouch="true"/>
 				</view>
 			</view>
-			<view class="split_line"></view>
 			<view class="split_line"></view>
 
 			<!-- X商品脱落率-->
@@ -91,27 +78,23 @@
 
 			<!-- 销售指数-->
 			<view class="friend_operate">
-				<view class="title">
-					销售指数
-					<text class="font-small">(总销售)</text>
+				<view class="selectCate">
+					<view class="title">
+						销售指数
+						<text class="font-small">(总销售)</text>
+					</view>
+					<view class="uni-list">
+						<view class="uni-list-cell">
+							<view class="uni-list-cell-db">
+								<picker @change="bindPickerChange" :value="index" :range="catelist">
+									<view class="uni-input" style="color: #ff9900;">类别：{{ catelist[index] }}</view>
+								</picker>
+							</view>
+						</view>
+					</view>
 				</view>
-				<text-block :isPC="isPC" :content="salePoint"></text-block>
 				<view class="charts-box">
-					<qiun-data-charts
-						type="pie"
-						collection="market-goods"
-						groupby="name as text,total_sell_count as value"
-						where="category_id=='60616f1b4f2517000140c59b'"
-						:resshow="delayload"
-						:canvas2d="isCanvas2d"
-						canvasId="two_a"
-						:reload="reloadTwoA"
-						@complete="completeTwoA"
-						:inScrollView="true"
-						:pageScrollTop="pageScrollTop"
-						:ontouch="true"
-						:opts="{ legend: { position: 'bottom' } }"
-					/>
+					<qiun-data-charts type="ring" collection="market-goods" groupby="name as text,total_sell_count as value" :where="cateid" :resshow="delayload" :canvas2d="isCanvas2d" canvasId="two_a" :reload="reloadTwoA" @complete="completeTwoA" :inScrollView="true" :pageScrollTop="pageScrollTop" :ontouch="true" :opts="{ legend: { position:'bottom' }}" />
 				</view>
 			</view>
 			<view class="friend_operate">
@@ -122,26 +105,17 @@
 				<view class="charts-box" style="height: 300px;">
 					<qiun-data-charts
 						type="column"
-						collection="market-categories"
-						groupby="name as text,sort as value"
-						where="parent_id==''"
+						:chartData="columnData"
 						:resshow="delayload"
 						:canvas2d="isCanvas2d"
 						canvasId="two_e"
 						:inScrollView="true"
 						:pageScrollTop="pageScrollTop"
 						:ontouch="true"
-						:opts="{ yAxis: { data: [{ position: 'left', title: '销售额/元', min: 0, unit: '%' }] } }"
-					/>
+						:opts="{ yAxis: { showTitle: false, data: [{ position: 'left', min: 0, title: '销量/个' }] } }"/>
 				</view>
 			</view>
-
-			<view
-				class="update_data"
-				@click="update_data"
-				style="background-image: linear-gradient(to top right,#3EB2F5,#9374F7);"
-				:animation="animationData"
-			>
+			<view class="update_data" @click="update_data" style="background-image: linear-gradient(to top right,#3EB2F5,#9374F7);" :animation="animationData">
 				刷新
 			</view>
 		</scroll-view>
@@ -149,9 +123,9 @@
 </template>
 
 <script>
-import Api from '../../static/api/mall/index.js';
-import CircleData from '../../static/json/user-server/1.json';
-
+import Api from '../../static/api/mall/index.js'
+import CircleData from '../../static/json/user-server/1.json'
+const db = uniCloud.database()
 export default {
 	name: 'user-operate',
 	props: {
@@ -174,10 +148,12 @@ export default {
 	},
 	data() {
 		return {
+			category: [],
+			catelist: [],
+			cateid: "category_id=='60616f1b4f2517000140c59b'",
+			index: 0,
 			CircleData,
 			goodsProgress: [],
-			salePoint: [],
-			salePlatform: [],
 			salePlatformMix: null,
 			seniorHeightInPc: [150, , 150],
 			seniorFontSizeInPc: [30, 30],
@@ -214,76 +190,108 @@ export default {
 			},
 			animationData: {},
 			off: false, //判断是否开启动画,
-			reloadTwoA: false
-		};
+			reloadTwoA: false,
+			columnData:{
+				  categories:[],
+				  series:[],
+			}
+		}
 	},
 	mounted() {
-		this.getData();
+		this.getData()
 		// 初始化一个动画
 		var animation = uni.createAnimation({
 			duration: 1000,
 			timingFunction: 'ease'
-		});
-		this.animation = animation;
+		})
+		this.animation = animation
 	},
 	methods: {
 		update_data() {
-			this.goodsProgress = null;
-			this.salePoint = null;
-			this.salePlatform = null;
-			this.salePlatformMix = null;
-			this.reloadTwoA = true;
-			this.getData();
+			this.goodsProgress = null
+			this.salePlatformMix = null
+			this.reloadTwoA = true
+			this.getData()
 		},
 		completeTwoA() {
-			this.reloadTwoA = false;
+			this.reloadTwoA = false
 		},
 		//开启动画事件
 		declick() {
 			if (!this.off) {
-				this.rotateAndScale();
-				this.off = true;
+				this.rotateAndScale()
+				this.off = true
 			}
 		},
 		// 定义动画内容
 		rotateAndScale() {
 			// 定义动画内容
-			this.animation.translateX(-80).step();
+			this.animation.translateX(-80).step()
 			// 导出动画数据传递给data层
-			this.animationData = this.animation.export();
+			this.animationData = this.animation.export()
 			var timer = setTimeout(() => {
-				this.off = false;
-				this.norotateAndScale();
-			}, 3000);
+				this.off = false
+				this.norotateAndScale()
+			}, 3000)
 		},
 		norotateAndScale() {
-			this.animation.translateX(0).step();
-			this.animationData = this.animation.export();
+			this.animation.translateX(0).step()
+			this.animationData = this.animation.export()
 		},
 		toScroll(e) {
-			this.pageScrollTop = e.detail.scrollTop + 85;
-			this.declick();
+			this.pageScrollTop = e.detail.scrollTop + 85
+			this.declick()
 		},
 		updateRanking(nVal) {
-			this.goodsProgress = nVal;
+			this.goodsProgress = nVal
+		},
+		bindPickerChange: function(e) {
+			this.index = e.target.value
+			this.cateid = "category_id=='" + this.category[this.index]._id + "'"
 		},
 		async getData() {
-			uni.showLoading();
+			uni.showLoading()
 			await Api.getGoodsProgressBar({
 				name: 'getGoodsProgressBar',
 				length: 5
 			}).then(res => {
-				this.goodsProgress = res;
-			});
+				this.goodsProgress = res
+			})
 			await Api.getGoodsMixCharts({
 				name: 'getGoodsMixCharts'
 			}).then(res => {
-				this.salePlatformMix = res;
-			});
-			await uni.hideLoading();
+				this.salePlatformMix = res
+			})
+			let res = await db
+				.collection('market-categories')
+				.where({
+					parent_id: ''
+				})
+				.get()
+			let goods = await db
+				.collection('market-goods').get()
+			this.category = res.result.data
+			for (let i in res.result.data) {
+				this.catelist.push(res.result.data[i].name)
+				this.columnData.categories = this.catelist
+			}
+			let coldata = []
+			this.category.map((item,index)=>{
+				let cate_orders = goods.result.data.filter(x=>x.category_id == item._id)
+				let cate_count=0;
+				cate_orders.map(x=>{cate_count+=x.total_sell_count})
+				coldata.push(cate_count)
+			})
+			let obj = {
+				"name":"销量",
+				"data":coldata,
+				"color": "#6294F8",
+			}
+			this.columnData.series.push(obj)
+			await uni.hideLoading()
 		}
 	}
-};
+}
 </script>
 
 <style scoped lang="less">
@@ -545,10 +553,8 @@ export default {
 
 	.friend_operate {
 		padding: 30rpx 20rpx;
-
 		.title {
 			text-align: left;
-			margin-bottom: 30rpx;
 			font-size: 40rpx;
 		}
 
@@ -559,5 +565,13 @@ export default {
 			margin-top: 20rpx;
 		}
 	}
+}
+
+.selectCate {
+	padding: 0 20rpx;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 30rpx;
 }
 </style>

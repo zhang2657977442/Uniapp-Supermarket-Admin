@@ -44,7 +44,7 @@
 .fix-window-top {
 	width: 100%;
 	position: fixed;
-	top: 25px;
+	top: 0;
 	left: 0;
 	z-index: 999;
 }

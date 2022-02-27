@@ -120,17 +120,6 @@
 			// #ifdef MP
 			let menuButtonInfo = uni.getMenuButtonBoundingClientRect()
 			this.mpCapsule = menuButtonInfo.width
-			this.$nextTick(() => {
-				this.changeLanguage('zh-Hans')
-			})
-			// #endif
-
-			// 沉余代码，临时处理 uni-datetime-picker 国际化不生效的问题
-			// #ifdef H5
-			uni.setLocale('en')
-			this.$nextTick(() => {
-				this.changeLanguage('zh-Hans')
-			})
 			// #endif
 		},
 		methods: {
@@ -201,6 +190,8 @@
 </script>
 
 <style lang="scss">
+	
+	/* #ifdef H5 */
 	.header {
 		height: 48px;
 		width: 100%;
@@ -209,7 +200,19 @@
 		background-color: $top-window-bg-color;
 		color: $top-window-text-color;
 	}
+	/* #endif */
 
+	/* #ifndef H5 */
+	.header {
+		height: 88px;
+		padding-top: 45px;
+		width: 100%;
+		box-sizing: border-box;
+		border-bottom: 1px solid darken($top-window-bg-color, 8%);
+		background-color: $top-window-bg-color;
+		color: $top-window-text-color;
+	}
+	/* #endif */
 	.navbar {
 		font-size: 14px;
 		position: relative;

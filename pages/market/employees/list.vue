@@ -98,9 +98,6 @@
 				</view>
 			</unicloud-db>
 		</view>
-		<!-- #ifndef H5 -->
-		<fix-window />
-		<!-- #endif -->
 		<uni-popup ref="tagsPopup" type="center">
 			<view class="tags-manager--x">
 				<view class="tags-manager--header mb">部门管理</view>

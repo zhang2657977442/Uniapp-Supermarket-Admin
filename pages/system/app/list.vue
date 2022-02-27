@@ -76,10 +76,6 @@
 				</view>
 			</unicloud-db>
 		</view>
-
-		<!-- #ifndef H5 -->
-		<fix-window />
-		<!-- #endif -->
 	</view>
 </template>
 

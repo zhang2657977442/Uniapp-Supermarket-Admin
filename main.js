@@ -3,7 +3,7 @@ import store from './store'
 import plugin from './js_sdk/uni-admin/plugin'
 import messages from './i18n/index.js'
 
-const lang = uni.getLocale()
+const lang = "zh-Hans"
 // #ifndef VUE3
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'

@@ -37,78 +37,91 @@
 	"pages":[{
 		    "path": "goods/add",
 		    "style": {
-		        "navigationBarTitleText": "新增商品"
+		        "navigationBarTitleText": "新增商品",
+				"navigationStyle": "default"
 		    }
 		}
 		,{
 		    "path": "goods/edit",
 		    "style": {
-		        "navigationBarTitleText": "编辑商品"
+		        "navigationBarTitleText": "编辑商品",
+				"navigationStyle": "default"
 		    }
 		}
 		,{
 		    "path": "goods/list",
 		    "style": {
-		        "navigationBarTitleText": "商品列表"
+		        "navigationBarTitleText": "商品列表",
+				"navigationStyle": "default"
 		    }
 		},{
     "path": "sku/add",
     "style": {
-        "navigationBarTitleText": "新增sku"
+        "navigationBarTitleText": "新增sku",
+		"navigationStyle": "default"
     }
 }
 ,{
     "path": "sku/edit",
     "style": {
-        "navigationBarTitleText": "编辑sku"
+        "navigationBarTitleText": "编辑sku",
+		"navigationStyle": "default"
     }
 }
 ,{
     "path": "sku/list",
     "style": {
-        "navigationBarTitleText": "sku管理"
+        "navigationBarTitleText": "sku管理",
+		"navigationStyle": "default"
     }
 }
 ,{
     "path": "order/add",
     "style": {
-        "navigationBarTitleText": "新增账单"
+        "navigationBarTitleText": "新增账单",
+		"navigationStyle": "default"
     }
 }
 ,{
     "path": "order/edit",
     "style": {
-        "navigationBarTitleText": "编辑账单"
+        "navigationBarTitleText": "编辑账单",
+		"navigationStyle": "default"
     }
 }
 ,{
     "path": "order/list",
     "style": {
-        "navigationBarTitleText": "账单管理"
+        "navigationBarTitleText": "账单管理",
+		"navigationStyle": "default"
     }
 }
 ,{
     "path": "categories/add",
     "style": {
-        "navigationBarTitleText": "新增类别"
+        "navigationBarTitleText": "新增类别",
+		"navigationStyle": "default"
     }
 }
 ,{
     "path": "categories/edit",
     "style": {
-        "navigationBarTitleText": "编辑类别"
+        "navigationBarTitleText": "编辑类别",
+		"navigationStyle": "default"
     }
 }
 ,{
     "path": "categories/list",
     "style": {
-        "navigationBarTitleText": "类别管理"
+        "navigationBarTitleText": "类别管理",
+		"navigationStyle": "default"
     }
 },
 {
 			"path": "permission/list",
 			"style": {
-				"navigationBarTitleText": "权限管理"
+				"navigationBarTitleText": "权限管理",
+				"navigationStyle": "default"
 			}
 		}, {
 			"path": "permission/add",
@@ -138,7 +151,8 @@
 		}, {
 			"path": "jobs/list",
 			"style": {
-				"navigationBarTitleText": "岗位管理"
+				"navigationBarTitleText": "岗位管理",
+				"navigationStyle": "default"
 			}
 		}, {
 			"path": "employees/add",
@@ -155,22 +169,26 @@
 		}, {
 			"path": "employees/list",
 			"style": {
-				"navigationBarTitleText": "员工管理"
+				"navigationBarTitleText": "员工管理",
+				"navigationStyle": "default"
 			}
 		}, {
 			"path": "department/add",
 			"style": {
-				"navigationBarTitleText": "新增部门"
+				"navigationBarTitleText": "新增部门",
+				"navigationStyle": "default"
 			}
 		}, {
 			"path": "department/edit",
 			"style": {
-				"navigationBarTitleText": " 编辑部门"
+				"navigationBarTitleText": " 编辑部门",
+				"navigationStyle": "default"
 			}
 		}, {
 			"path": "department/list",
 			"style": {
-				"navigationBarTitleText": "部门管理"
+				"navigationBarTitleText": "部门管理",
+				"navigationStyle": "default"
 			}
 		}
 ]
@@ -180,7 +198,8 @@
 		"pages": [{
 			"path": "menu/list",
 			"style": {
-				"navigationBarTitleText": "菜单管理"
+				"navigationBarTitleText": "菜单管理",
+				"navigationStyle": "default"
 			}
 		}, {
 			"path": "menu/add",
@@ -211,23 +230,27 @@
 		}, {
 			"path": "app/list",
 			"style": {
-				"navigationBarTitleText": "应用管理"
+				"navigationBarTitleText": "应用管理",
+				"navigationStyle": "default"
 			}
 		}, 
 		{
 			"path": "log/add",
 			"style": {
-				"navigationBarTitleText": "新增日志"
+				"navigationBarTitleText": "新增日志",
+				"navigationStyle": "default"
 			}
 		}, {
 			"path": "log/edit",
 			"style": {
-				"navigationBarTitleText": "编辑日志"
+				"navigationBarTitleText": "编辑日志",
+				"navigationStyle": "default"
 			}
 		}, {
 			"path": "log/list",
 			"style": {
-				"navigationBarTitleText": "日志管理"
+				"navigationBarTitleText": "日志管理",
+				"navigationStyle": "default"
 			}
 		}
 		]
@@ -254,10 +277,10 @@
 	}],
 	"globalStyle": {
 		"navigationStyle": "custom",
-		"navigationBarTextStyle": "black",
+		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "管理系统",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarBackgroundColor": "#001529",
+		"backgroundColor": "#001529"
 	},
 	"topWindow": {
 		"path": "windows/topWindow",

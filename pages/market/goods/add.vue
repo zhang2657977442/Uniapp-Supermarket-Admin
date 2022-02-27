@@ -28,7 +28,7 @@
 	  <uni-forms-item name="goods_pic" label="商品图片" required>
 	    <uni-file-picker file-mediatype="image" return-type="object" v-model="formData.goods_pic" limit="3"></uni-file-picker>
 	  </uni-forms-item>
-	  <div style="display: flex;">
+	  <div class="selectFlex">
 	  <uni-forms-item name="is_real" label="是否实物" required>
 	    <switch @change="binddata('is_real', $event.detail.value)" :checked="formData.is_real"></switch>
 	  </uni-forms-item>
@@ -142,3 +142,10 @@
     }
   }
 </script>
+<style>
+   .selectFlex{
+	   display: flex;
+	   width: 100%;
+	   flex-wrap: wrap;
+   }
+</style>
