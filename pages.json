@@ -9,7 +9,8 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "快速结账"
+				"navigationBarTitleText": "快速结账",
+				"navigationStyle": "default"
 			}
 		}, {
 			"path": "pages/login/login",

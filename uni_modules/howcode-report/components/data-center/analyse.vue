@@ -5,7 +5,12 @@
 				<!--数据进度条-->
 				<view v-if="goodsProgress.length > 0" class="progress">
 					<view class="title">销售前5榜单</view>
-					<progress-bar :isPC="isPC" :isRank="isRank" :content="goodsProgress" @updateRanking="updateRanking"/>
+					<progress-bar
+						:isPC="isPC"
+						:isRank="isRank"
+						:content="goodsProgress"
+						@updateRanking="updateRanking"
+					/>
 				</view>
 			</view>
 			<view class="split_line"></view>
@@ -13,7 +18,11 @@
 			<view class="friend_operate">
 				<view class="title">统计概览</view>
 				<view class="progress_circle">
-					<view v-for="(item, index) in CircleData" :key="index" :class="['progress_block', 'block_' + index]">
+					<view
+						v-for="(item, index) in CircleData"
+						:key="index"
+						:class="['progress_block', 'block_' + index]"
+					>
 						<view class="name">{{ item.series[0].name }}</view>
 						<view class="value">{{ item.series[0].value }}</view>
 						<view class="planet">
@@ -46,7 +55,8 @@
 						:canvas2d="isCanvas2d"
 						:inScrollView="true"
 						:pageScrollTop="pageScrollTop"
-						:ontouch="true"/>
+						:ontouch="true"
+					/>
 				</view>
 			</view>
 			<view class="split_line"></view>
@@ -94,7 +104,21 @@
 					</view>
 				</view>
 				<view class="charts-box">
-					<qiun-data-charts type="ring" collection="market-goods" groupby="name as text,total_sell_count as value" :where="cateid" :resshow="delayload" :canvas2d="isCanvas2d" canvasId="two_a" :reload="reloadTwoA" @complete="completeTwoA" :inScrollView="true" :pageScrollTop="pageScrollTop" :ontouch="true" :opts="{ legend: { position:'bottom' }}" />
+					<qiun-data-charts
+						type="ring"
+						collection="market-goods"
+						groupby="name as text,total_sell_count as value"
+						:where="cateid"
+						:resshow="delayload"
+						:canvas2d="isCanvas2d"
+						canvasId="two_a"
+						:reload="reloadTwoA"
+						@complete="completeTwoA"
+						:inScrollView="true"
+						:pageScrollTop="pageScrollTop"
+						:ontouch="true"
+						:opts="{ legend: { position: 'bottom' } }"
+					/>
 				</view>
 			</view>
 			<view class="friend_operate">
@@ -112,10 +136,16 @@
 						:inScrollView="true"
 						:pageScrollTop="pageScrollTop"
 						:ontouch="true"
-						:opts="{ yAxis: { showTitle: false, data: [{ position: 'left', min: 0, title: '销量/个' }] } }"/>
+						:opts="{ yAxis: { showTitle: false, data: [{ position: 'left', min: 0, title: '销量/个' }] } }"
+					/>
 				</view>
 			</view>
-			<view class="update_data" @click="update_data" style="background-image: linear-gradient(to top right,#3EB2F5,#9374F7);" :animation="animationData">
+			<view
+				class="update_data"
+				@click="update_data"
+				style="background-image: linear-gradient(to top right,#3EB2F5,#9374F7);"
+				:animation="animationData"
+			>
 				刷新
 			</view>
 		</scroll-view>
@@ -132,10 +162,6 @@ export default {
 		scrollHeight: {
 			type: String,
 			default: '600px'
-		},
-		currentTab: {
-			type: String,
-			default: ''
 		},
 		isPC: {
 			type: Boolean,
@@ -191,9 +217,9 @@ export default {
 			animationData: {},
 			off: false, //判断是否开启动画,
 			reloadTwoA: false,
-			columnData:{
-				  categories:[],
-				  series:[],
+			columnData: {
+				categories: [],
+				series: []
 			}
 		}
 	},
@@ -211,6 +237,13 @@ export default {
 			this.goodsProgress = null
 			this.salePlatformMix = null
 			this.reloadTwoA = true
+			this.catelist = []
+			this.columnData = 
+			{
+				categories: [],
+				series: []
+			}
+			console.log(this.columnData)
 			this.getData()
 		},
 		completeTwoA() {
@@ -268,24 +301,25 @@ export default {
 					parent_id: ''
 				})
 				.get()
-			let goods = await db
-				.collection('market-goods').get()
+			let goods = await db.collection('market-goods').get()
 			this.category = res.result.data
 			for (let i in res.result.data) {
 				this.catelist.push(res.result.data[i].name)
 				this.columnData.categories = this.catelist
 			}
 			let coldata = []
-			this.category.map((item,index)=>{
-				let cate_orders = goods.result.data.filter(x=>x.category_id == item._id)
-				let cate_count=0;
-				cate_orders.map(x=>{cate_count+=x.total_sell_count})
+			this.category.map((item, index) => {
+				let cate_orders = goods.result.data.filter(x => x.category_id == item._id)
+				let cate_count = 0
+				cate_orders.map(x => {
+					cate_count += x.total_sell_count
+				})
 				coldata.push(cate_count)
 			})
 			let obj = {
-				"name":"销量",
-				"data":coldata,
-				"color": "#6294F8",
+				name: '销量',
+				data: coldata,
+				color: '#6294F8'
 			}
 			this.columnData.series.push(obj)
 			await uni.hideLoading()
