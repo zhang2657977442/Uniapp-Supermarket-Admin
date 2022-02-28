@@ -151,21 +151,17 @@
 					pageCurrent,
 					filterData: {
 						"status_localdata": [{
-								"text": "正常",
+								"text": "在岗",
 								"value": 0,
 								"checked": true
 							},
 							{
-								"text": "禁用",
+								"text": "离职",
 								"value": 1
 							},
 							{
-								"text": "审核中",
+								"text": "请假中",
 								"value": 2
-							},
-							{
-								"text": "审核拒绝",
-								"value": 3
 							}
 						]
 					},

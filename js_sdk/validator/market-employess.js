@@ -90,10 +90,9 @@ const validator = {
 
 const enumConverter = {
 	"status_valuetotext": {
-		"0": "正常",
-		"1": "禁用",
-		"2": "审核中",
-		"3": "审核拒绝"
+		"0": "在岗",
+		"1": "离职",
+		"2": "请假中",
 	}
 }
 
