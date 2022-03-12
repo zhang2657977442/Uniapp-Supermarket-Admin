@@ -30,7 +30,7 @@
             <uni-th align="center">操作</uni-th>
           </uni-tr>
           <uni-tr v-for="(item,index) in data" :key="index">
-            <uni-td align="center">{{item.order_guid}}</uni-td>
+            <uni-td align="center">{{item._id}}</uni-td>
             <uni-td v-if="item.good_id.length > 0" align="center">{{item.good_id[0].name}}</uni-td>
 			<uni-td v-else align="center">{{item.good_id[0]}}</uni-td>
             <uni-td align="center">{{item.total_cash}}</uni-td>

@@ -12,7 +12,15 @@
 				"navigationBarTitleText": "快速结账",
 				"navigationStyle": "default"
 			}
-		}, {
+		}, 
+		{
+			"path": "pages/index/pay",
+			"style": {
+				"navigationBarTitleText": "账单详情",
+				"navigationStyle": "default"
+			}
+		}, 
+		{
 			"path": "pages/login/login",
 			"style": {
 				"topWindow": false,

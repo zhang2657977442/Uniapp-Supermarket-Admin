@@ -23,8 +23,8 @@
 						:key="index"
 						:class="['progress_block', 'block_' + index]"
 					>
-						<view class="name">{{ item.series[0].name }}</view>
-						<view class="value">{{ item.series[0].value }}</view>
+						<view class="name">{{ item.name }}</view>
+						<view class="value">{{ item.value }}</view>
 						<view class="planet">
 							<view class="planet_shadow"></view>
 							<view class="crater1"></view>
@@ -154,7 +154,6 @@
 
 <script>
 import Api from '../../static/api/mall/index.js'
-import CircleData from '../../static/json/user-server/1.json'
 const db = uniCloud.database()
 export default {
 	name: 'user-operate',
@@ -178,7 +177,7 @@ export default {
 			catelist: [],
 			cateid: "category_id=='60616f1b4f2517000140c59b'",
 			index: 0,
-			CircleData,
+			CircleData: [],
 			goodsProgress: [],
 			salePlatformMix: null,
 			seniorHeightInPc: [150, , 150],
@@ -238,8 +237,8 @@ export default {
 			this.salePlatformMix = null
 			this.reloadTwoA = true
 			this.catelist = []
-			this.columnData = 
-			{
+			this.CircleData = []
+			this.columnData = {
 				categories: [],
 				series: []
 			}
@@ -301,15 +300,43 @@ export default {
 					parent_id: ''
 				})
 				.get()
-			let goods = await db.collection('market-goods').get()
 			this.category = res.result.data
+			let goods = await db.collection('market-goods').get()
+			let order = await db.collection('market-order').get()
+			let total_cash = 0
+			let total_remain = 0
+			let goodsList = goods.result.data
+			let orderList = order.result.data
+			for (let i = 0; i < goodsList.length; i++) {
+				total_remain += goodsList[i].remain_count
+			}
+			for (let i = 0; i < orderList.length; i++) {
+				total_cash += orderList[i].total_cash
+			}
+			this.CircleData.push({
+				name: '总销售额(元)',
+				value: total_cash
+			})
+			this.CircleData.push({
+				name: '库存数量(个)',
+				value: total_remain
+			})
+			this.CircleData.push({
+				name: '支付笔数(笔)',
+				value: orderList.length
+			})
+
+			this.CircleData.push({
+				name: '商品种类(类)',
+				value: this.category.length
+			})
 			for (let i in res.result.data) {
 				this.catelist.push(res.result.data[i].name)
 				this.columnData.categories = this.catelist
 			}
 			let coldata = []
 			this.category.map((item, index) => {
-				let cate_orders = goods.result.data.filter(x => x.category_id == item._id)
+				let cate_orders = goodsList.filter(x => x.category_id == item._id)
 				let cate_count = 0
 				cate_orders.map(x => {
 					cate_count += x.total_sell_count

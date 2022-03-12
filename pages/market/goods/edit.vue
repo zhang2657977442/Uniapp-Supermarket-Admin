@@ -25,7 +25,7 @@
    <uni-forms-item name="seller_note" label="商家备注">
      <uni-easyinput placeholder="商家备注" v-model="formData.seller_note" trim="both"></uni-easyinput>
    </uni-forms-item>
-   <uni-forms-item name="goods_pic" label="商品图片" required>
+   <uni-forms-item name="goods_pic" label="商品图片">
      <uni-file-picker file-mediatype="image" return-type="object" v-model="formData.goods_pic" limit="3"></uni-file-picker>
    </uni-forms-item>
    <div class="selectFlex">

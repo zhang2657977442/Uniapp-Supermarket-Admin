@@ -17,9 +17,9 @@
 	],
 	"permission": {
 		"read": "doc.is_on_sale == true",
-		"create": false,
-		"update": false,
-		"delete": false
+		"create": true,
+		"update": true,
+		"delete": true
 	},
 	"properties": {
 		"_id": {

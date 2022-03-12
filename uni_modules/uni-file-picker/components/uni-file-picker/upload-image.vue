@@ -186,6 +186,7 @@
 		box-sizing: border-box;
 		/* #endif */
 		flex-wrap: wrap;
+		justify-content: center;
 		margin: -5px;
 	}
 

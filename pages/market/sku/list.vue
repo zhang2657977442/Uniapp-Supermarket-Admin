@@ -37,7 +37,7 @@
 						<uni-th align="center">操作</uni-th>
 					</uni-tr>
 					<uni-tr v-for="(item,index) in data" :key="index">
-						<uni-td align="center">{{item.goods_id[0].name}}</uni-td>
+						<uni-td align="center" v-if="item.goods_id.length>0">{{item.goods_id[0].name}}</uni-td>
 						<uni-td align="center">{{item.price}}</uni-td>
 						<uni-td align="center">{{item.stock}}</uni-td>
 						<uni-td align="center">
