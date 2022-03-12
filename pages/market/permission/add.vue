@@ -1,8 +1,8 @@
 <template>
   <view class="uni-container">
     <uni-forms ref="form" :value="formData" validateTrigger="bind">
-      <uni-forms-item name="permission_id" label="权限ID" required>
-        <input placeholder="权限唯一标识，不可修改，不允许重复" @input="binddata('permission_id', $event.detail.value)" class="uni-input-border" v-model="formData.permission_id" trim="both" />
+      <uni-forms-item name="permission_id" label="权限标识" required>
+        <input placeholder="权限标识" @input="binddata('permission_id', $event.detail.value)" class="uni-input-border" v-model="formData.permission_id" trim="both" />
       </uni-forms-item>
       <uni-forms-item name="permission_name" label="权限名称" required>
         <input placeholder="权限名称" @input="binddata('permission_name', $event.detail.value)" class="uni-input-border" v-model="formData.permission_name" trim="both" />
@@ -21,11 +21,11 @@
 </template>
 
 <script>
-  import { validator } from '@/js_sdk/validator/uni-id-permissions.js';
+  import { validator } from '@/js_sdk/validator/market-permissions.js';
 
   const db = uniCloud.database();
   const dbCmd = db.command;
-  const dbCollectionName = 'uni-id-permissions';
+  const dbCollectionName = 'market-permissions';
 
   function getValidator(fields) {
     let result = {}

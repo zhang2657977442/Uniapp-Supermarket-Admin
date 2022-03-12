@@ -1,14 +1,14 @@
 <template>
   <view class="uni-container">
-    <uni-forms ref="form" :value="formData" validateTrigger="bind">
-      <uni-forms-item name="tagid" label="标签tagid" required>
-        <uni-easyinput placeholder="标签的tagid" v-model="formData.tagid"></uni-easyinput>
+    <uni-forms ref="form" :value="formData" validateTrigger="bind" :rules="rules">
+      <uni-forms-item name="tagid" label="部门标识" required>
+        <uni-easyinput placeholder="部门标识" v-model="formData.tagid"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="name" label="标签名称" required>
-        <uni-easyinput placeholder="标签名称" v-model="formData.name"></uni-easyinput>
+      <uni-forms-item name="name" label="部门名称" required>
+        <uni-easyinput placeholder="部门名称" v-model="formData.name"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="description" label="标签描述">
-        <textarea placeholder="标签描述" @input="binddata('description', $event.detail.value)" class="uni-textarea-border" v-model="formData.description"></textarea>
+      <uni-forms-item name="description" label="部门描述">
+        <textarea placeholder="部门描述" @input="binddata('description', $event.detail.value)" class="uni-textarea-border" v-model="formData.description"></textarea>
       </uni-forms-item>
       <view class="uni-button-group">
         <button type="primary" class="uni-button" style="width: 100px;" @click="submit">提交</button>
@@ -21,11 +21,11 @@
 </template>
 
 <script>
-  import { validator } from '@/js_sdk/validator/uni-id-tag.js';
+  import { validator } from '@/js_sdk/validator/market-department.js';
 
   const db = uniCloud.database();
   const dbCmd = db.command;
-  const dbCollectionName = 'uni-id-tag';
+  const dbCollectionName = 'market-department';
 
   function getValidator(fields) {
     let result = {}

@@ -1,0 +1,31 @@
+{
+	"bsonType": "object",
+	"properties": {
+		"_id": {
+			"description": "存储文档 ID（SKU ID），系统自动生成"
+		},
+		"create_date": {
+			"bsonType": "timestamp",
+			"description": "创建时间"
+		},
+		"goods_id": {
+			"bsonType": "string",
+			"description": "商品 id，参考 market-goods 表",
+			"foreignKey": "market-goods._id"
+		},
+		"price": {
+			"bsonType": "Number",
+			"description": "价格，以分为单位，避免浮点计算的精度问题"
+		},
+		"stock": {
+			"bsonType": "int",
+			"description": "库存"
+		}
+	},
+	"required": [
+		"goods_id",
+		"price",
+		"stock",
+		"create_date",
+	]
+}

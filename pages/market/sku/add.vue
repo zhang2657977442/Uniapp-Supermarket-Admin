@@ -1,26 +1,17 @@
 <template>
   <view class="uni-container">
-    <uni-forms ref="form" :value="formData" validateTrigger="bind">
-      <uni-forms-item name="create_date" label="" required>
-        <uni-datetime-picker return-type="timestamp" v-model="formData.create_date"></uni-datetime-picker>
+    <uni-forms ref="form" :value="formData" validateTrigger="bind" :rules="rules">
+      <uni-forms-item name="goods_id" label="商品id" required>
+        <uni-easyinput placeholder="商品id" v-model="formData.goods_id"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="goods_id" label="" required>
-        <uni-easyinput placeholder="商品 id，参考 opendb-mall-goods 表" v-model="formData.goods_id"></uni-easyinput>
+      <uni-forms-item name="price" label="价格" required>
+        <uni-easyinput placeholder="价格" type="number" v-model="formData.price"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="market_price" label="">
-        <uni-easyinput placeholder="市场价，以分为单位，避免浮点计算的精度问题" type="number" v-model="formData.market_price"></uni-easyinput>
-      </uni-forms-item>
-      <uni-forms-item name="price" label="" required>
-        <uni-easyinput placeholder="价格，以分为单位，避免浮点计算的精度问题" type="number" v-model="formData.price"></uni-easyinput>
-      </uni-forms-item>
-      <uni-forms-item name="sku_name" label="" required>
-        <uni-easyinput placeholder="SKU名称" v-model="formData.sku_name" trim="both"></uni-easyinput>
-      </uni-forms-item>
-      <uni-forms-item name="stock" label="" required>
+      <uni-forms-item name="stock" label="库存" required>
         <uni-easyinput placeholder="库存" type="number" v-model="formData.stock"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="update_date" label="" required>
-        <uni-datetime-picker return-type="timestamp" v-model="formData.update_date"></uni-datetime-picker>
+      <uni-forms-item name="create_date" label="创建时间" required>
+        <uni-datetime-picker return-type="timestamp" v-model="formData.create_date"></uni-datetime-picker>
       </uni-forms-item>
       <view class="uni-button-group">
         <button type="primary" class="uni-button" style="width: 100px;" @click="submit">提交</button>
@@ -33,11 +24,11 @@
 </template>
 
 <script>
-  import { validator } from '../../../js_sdk/validator/opendb-mall-sku.js';
+  import { validator } from '../../../js_sdk/validator/market-sku.js';
 
   const db = uniCloud.database();
   const dbCmd = db.command;
-  const dbCollectionName = 'opendb-mall-sku';
+  const dbCollectionName = 'market-sku';
 
   function getValidator(fields) {
     let result = {}
@@ -54,11 +45,8 @@
       let formData = {
         "create_date": null,
         "goods_id": "",
-        "market_price": null,
         "price": null,
-        "sku_name": "",
         "stock": null,
-        "update_date": null
       }
       return {
         formData,

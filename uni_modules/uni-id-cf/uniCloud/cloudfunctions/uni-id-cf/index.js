@@ -7,7 +7,7 @@ const uniIdConfig = createConfig({
 }).config()
 const db = uniCloud.database()
 const dbCmd = db.command
-const usersDB = db.collection('uni-id-users')
+const usersDB = db.collection('market-employess')
 const deviceDB = db.collection('uni-id-device')
 exports.main = async (event, context) => {
 	console.log({
@@ -92,7 +92,7 @@ exports.main = async (event, context) => {
 	//4.记录成功登录的日志方法
 	const loginLog = async (res = {}) => {
 		const now = Date.now()
-		const uniIdLogCollection = db.collection('uni-id-log')
+		const uniIdLogCollection = db.collection('system-log')
 		let logData = {
 			deviceId: context.DEVICEID,
 			ip: context.CLIENTIP,
@@ -164,7 +164,7 @@ exports.main = async (event, context) => {
 		const now = Date.now(),
 			recordDate = 120 * 60 * 1000,
 			recordSize = 2;
-		const uniIdLogCollection = db.collection('uni-id-log')
+		const uniIdLogCollection = db.collection('system-log')
 		let recentRecord = await uniIdLogCollection.where({
 				deviceId: params.deviceId || context.DEVICEID,
 				create_date: dbCmd.gt(now - recordDate),
@@ -527,7 +527,7 @@ exports.main = async (event, context) => {
 			} = params
 			let {
 				total
-			} = await db.collection('uni-id-users').where({
+			} = await db.collection('market-employess').where({
 				role: 'admin'
 			}).count()
 			if (total) {
@@ -546,11 +546,11 @@ exports.main = async (event, context) => {
 				role: ["admin"]
 			})
 			if (res.code === 0) {
-				const app = await db.collection('opendb-app-list').where({
+				const app = await db.collection('system-app').where({
 					appid
 				}).count()
 				if (!app.total) {
-					await db.collection('opendb-app-list').add({
+					await db.collection('system-app').add({
 						appid,
 						name: appName,
 						description: "admin 管理后台",
@@ -663,7 +663,7 @@ exports.main = async (event, context) => {
 				value
 			} = params
 			if (type === 'add') {
-				res = await db.collection('uni-id-users').where({
+				res = await db.collection('market-employess').where({
 					_id: dbCmd.in(ids)
 				}).update({
 					tags: dbCmd.addToSet({
@@ -671,7 +671,7 @@ exports.main = async (event, context) => {
 					})
 				})
 			} else if (type === 'del') {
-				res = await db.collection('uni-id-users').where({
+				res = await db.collection('market-employess').where({
 					_id: dbCmd.in(ids)
 				}).update({
 					tags: dbCmd.pull(dbCmd.in(value))

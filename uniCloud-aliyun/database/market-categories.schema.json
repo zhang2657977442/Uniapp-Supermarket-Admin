@@ -1,0 +1,33 @@
+{
+	"bsonType": "object",
+	"permission": {
+		"create": false,
+		"delete": false,
+		"read": true,
+		"update": false
+	},
+	"properties": {
+		"_id": {
+			"description": "存储文档 ID（文章 ID），系统自动生成"
+		},
+		"name": {
+			"bsonType": "string",
+			"description": "类别名称",
+			"title": "类别名称",
+			"trim": "both"
+		},
+		"parent_id": {
+			"bsonType": "string",
+			"description": "父ID，用于多级分类",
+			"foreignKey": "market-categories._id"
+		},
+		"sort": {
+			"bsonType": "int",
+			"description": "类别排序，越大越靠后",
+			"title": "排序"
+		}
+	},
+	"required": [
+		"name"
+	]
+}

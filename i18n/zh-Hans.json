@@ -60,19 +60,49 @@
 		"empty": "没有更多数据",
 		"piecePerPage": "条/页"
 	},
-	"user": {
+	"order": {
 		"text": {
-			"userManager": "用户管理"
+			"title": "账单列表"
 		}
 	},
-	"role": {
+	"goods": {
 		"text": {
-			"roleManager": "角色管理"
+			"title": "商品列表"
+		}
+	},
+	"categories": {
+		"text": {
+			"title": "类别列表"
+		}
+	},
+	"sku": {
+		"text": {
+			"title": "sku列表"
+		}
+	},
+	"employee": {
+		"text": {
+			"title": "员工列表"
+		}
+	},
+	"jobs": {
+		"text": {
+			"title": "岗位列表"
+		}
+	},
+	"department": {
+		"text": {
+			"title": "部门列表"
 		}
 	},
 	"permission": {
 		"text": {
-			"permissionManager": "权限管理"
+			"title": "权限列表"
+		}
+	},
+	"log": {
+		"text": {
+			"title": "日志列表"
 		}
 	},
 	"app": {

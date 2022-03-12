@@ -1,34 +1,35 @@
 <template>
-  <view>
+  <view class="fix-top-window">
     <view class="uni-header">
       <view class="uni-group">
-        <view class="uni-title"></view>
-        <view class="uni-sub-title"></view>
+       <!-- 	<view class="uni-title">{{$t('categories.text.title')}}</view>
+        <view class="uni-sub-title"></view> -->
       </view>
       <view class="uni-group">
         <input class="uni-search" type="text" v-model="query" @confirm="search" placeholder="请输入搜索内容" />
         <button class="uni-button" type="default" size="mini" @click="search">搜索</button>
-        <button class="uni-button" type="default" size="mini" @click="navigateTo('./add')">新增</button>
-        <button class="uni-button" type="default" size="mini" :disabled="!selectedIndexs.length" @click="delTable">批量删除</button>
+        <button class="uni-button" type="primary" size="mini" @click="navigateTo('./add')">新增</button>
+        <button class="uni-button" type="warn" size="mini" :disabled="!selectedIndexs.length" @click="delTable">批量删除</button>
         <download-excel class="hide-on-phone" :fields="exportExcel.fields" :data="exportExcelData" :type="exportExcel.type" :name="exportExcel.filename">
           <button class="uni-button" type="primary" size="mini">导出 Excel</button>
         </download-excel>
       </view>
     </view>
     <view class="uni-container">
-      <unicloud-db ref="udb" :collection="collectionList" field="name,parent_id,sort" :where="where" page-data="replace"
+      <unicloud-db ref="udb" :collection="collectionList" field="name,parent_id{name},sort" :where="where" page-data="replace"
         :orderby="orderby" :getcount="true" :page-size="options.pageSize" :page-current="options.pageCurrent"
         v-slot:default="{data,pagination,loading,error,options}" :options="options" loadtime="manual" @load="onqueryload">
         <uni-table ref="table" :loading="loading" :emptyText="error.message || '没有更多数据'" border stripe type="selection" @selection-change="selectionChange">
           <uni-tr>
             <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'name')" sortable @sort-change="sortChange($event, 'name')">类别名称</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'parent_id')" sortable @sort-change="sortChange($event, 'parent_id')">parent_id</uni-th>
+            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'parent_id')" sortable @sort-change="sortChange($event, 'parent_id')">一级类别</uni-th>
             <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'sort')" sortable @sort-change="sortChange($event, 'sort')">排序</uni-th>
             <uni-th align="center">操作</uni-th>
           </uni-tr>
           <uni-tr v-for="(item,index) in data" :key="index">
             <uni-td align="center">{{item.name}}</uni-td>
-            <uni-td align="center">{{item.parent_id}}</uni-td>
+            <uni-td align="center" v-if="item.parent_id.length > 0">{{item.parent_id[0].name}}</uni-td>
+			<uni-td align="center" v-else>无</uni-td>
             <uni-td align="center">{{item.sort}}</uni-td>
             <uni-td align="center">
               <view class="uni-group">
@@ -47,7 +48,7 @@
 </template>
 
 <script>
-  import { enumConverter, filterToWhere } from '../../../js_sdk/validator/opendb-mall-categories.js';
+  import { enumConverter, filterToWhere } from '../../../js_sdk/validator/market-categories.js';
 
   const db = uniCloud.database()
   // 表查询配置
@@ -65,7 +66,7 @@
   export default {
     data() {
       return {
-        collectionList: "opendb-mall-categories",
+        collectionList: "market-categories,market-categories",
         query: '',
         where: '',
         orderby: dbOrderBy,

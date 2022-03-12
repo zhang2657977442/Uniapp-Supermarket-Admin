@@ -2,7 +2,7 @@
 	<view class="fix-top-window">
 		<view class="uni-header">
 			<view class="uni-group hide-on-phone">
-				<view class="uni-title">标签管理</view>
+			    <view class="uni-title">{{$t('department.text.title')}}</view>
 				<view class="uni-sub-title"></view>
 			</view>
 			<view class="uni-group">
@@ -18,7 +18,7 @@
 			</view>
 		</view>
 		<view class="uni-container">
-			<unicloud-db ref="udb" collection="uni-id-tag" field="tagid,name,description,create_date" :where="where"
+			<unicloud-db ref="udb" collection="market-department" field="tagid,name,description,create_date" :where="where"
 				page-data="replace" :orderby="orderby" :getcount="true" :page-size="options.pageSize"
 				:page-current="options.pageCurrent" v-slot:default="{data,pagination,loading,error,options}"
 				:options="options" loadtime="manual" @load="onqueryload">
@@ -26,14 +26,14 @@
 					type="selection" @selection-change="selectionChange">
 					<uni-tr>
 						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'tagid')"
-							sortable @sort-change="sortChange($event, 'tagid')">标签的tagid</uni-th>
+							sortable @sort-change="sortChange($event, 'tagid')">部门标识</uni-th>
 						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'name')"
-							sortable @sort-change="sortChange($event, 'name')">标签名称</uni-th>
+							sortable @sort-change="sortChange($event, 'name')">部门名称</uni-th>
 						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'description')"
-							sortable @sort-change="sortChange($event, 'description')">标签描述</uni-th>
+							sortable @sort-change="sortChange($event, 'description')">部门描述</uni-th>
 						<uni-th align="center" filter-type="timestamp"
 							@filter-change="filterChange($event, 'create_date')" sortable
-							@sort-change="sortChange($event, 'create_date')">创建时间</uni-th>
+							@sort-change="sortChange($event, 'create_date')">设立时间</uni-th>
 						<uni-th align="center">操作</uni-th>
 					</uni-tr>
 					<uni-tr v-for="(item,index) in data" :key="index">
@@ -47,7 +47,7 @@
 						</uni-td>
 						<uni-td align="center">
 							<view class="uni-group">
-								<button @click="navigateTo('../user/list?tagid='+item.tagid, false)" class="uni-button"
+								<button @click="navigateTo('../employees/list?tagid='+item.tagid, false)" class="uni-button"
 									size="mini" type="primary">成员</button>
 								<button @click="navigateTo('./edit?id='+item._id, false)" class="uni-button" size="mini"
 									type="primary">修改</button>
@@ -72,10 +72,6 @@
 				</view>
 			</unicloud-db>
 		</view>
-
-		<!-- #ifndef H5 -->
-		<fix-window />
-		<!-- #endif -->
 	</view>
 </template>
 
@@ -83,7 +79,7 @@
 	import {
 		enumConverter,
 		filterToWhere
-	} from '@/js_sdk/validator/uni-id-tag.js';
+	} from '@/js_sdk/validator/market-department.js';
 
 	const db = uniCloud.database()
 	// 表查询配置

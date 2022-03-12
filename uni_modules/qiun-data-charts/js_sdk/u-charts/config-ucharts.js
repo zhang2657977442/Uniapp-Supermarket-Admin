@@ -123,13 +123,8 @@ const cfu = {
       "lineHeight": 25,
 		},
 		"title": {
-			"name": "收益率",
-			"fontSize": 15,
-			"color": "#666666"
-		},
-		"subtitle": {
-			"name": "70%",
-			"fontSize": 25,
+			"name": "销售占比",
+			"fontSize": 20,
 			"color": "#7cb5ec"
 		},
 		"extra": {
@@ -367,13 +362,12 @@ const cfu = {
 		},
 		"yAxis": {
       "gridType": "dash",
+	  "showTitle": true,
       "dashLength": 2,
-		},
-		"legend": {
 		},
 		"extra": {
 			"area": {
-				"type": "straight",
+				"type": "curve",
 				"opacity": 0.2,
 				"addLine": true,
 				"width": 2,

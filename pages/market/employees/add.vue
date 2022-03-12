@@ -1,25 +1,24 @@
 <template>
 	<view class="uni-container">
 		<uni-forms ref="form" v-model="formData" :rules="rules" validateTrigger="bind" @submit="submit">
-			<uni-forms-item name="username" label="用户名" required>
+			<uni-forms-item name="username" label="员工名" required>
 				<uni-easyinput v-model="formData.username" :clearable="false" placeholder="请输入用户名" />
 			</uni-forms-item>
 			<uni-forms-item name="password" label="初始密码" required>
 				<uni-easyinput v-model="formData.password" :clearable="false" placeholder="请输入初始密码" />
 			</uni-forms-item>
-			<uni-forms-item name="role" label="角色列表" class="flex-center-x">
+			<uni-forms-item name="role" label="岗位" class="flex-center-x">
 				<uni-data-checkbox multiple :localdata="roles" v-model="formData.role" />
 			</uni-forms-item>
-			<uni-forms-item name="tags" label="用户标签" labelWidth="100" class="flex-center-x">
-				<uni-data-checkbox ref="checkbox" :multiple="true" v-model="formData.tags" collection="uni-id-tag"
+			<uni-forms-item name="tags" label="所属部门" labelWidth="100" class="flex-center-x">
+				<uni-data-checkbox ref="checkbox" :multiple="true" v-model="formData.tags" collection="market-department"
 					field="tagid as value, name as text"></uni-data-checkbox>
 				<span class="link-btn" @click="gotoTagAdd">新增</span>
 				<span class="link-btn" @click="gotoTagList" style="margin-left: 10px;">管理</span>
 			</uni-forms-item>
 			<uni-forms-item name="dcloud_appid" label="可登录应用" labelWidth="100" class="flex-center-x">
-				<uni-data-checkbox :multiple="true" v-model="formData.dcloud_appid" collection="opendb-app-list"
+				<uni-data-checkbox :multiple="true" v-model="formData.dcloud_appid" collection="system-app"
 					field="appid as value, name as text"></uni-data-checkbox>
-				<span class="link-btn" @click="gotoAppList">管理</span>
 			</uni-forms-item>
 			<uni-forms-item name="mobile" label="手机号">
 				<uni-easyinput v-model="formData.mobile" :clearable="false" placeholder="请输入手机号" />
@@ -27,7 +26,7 @@
 			<uni-forms-item name="email" label="邮箱">
 				<uni-easyinput v-model="formData.email" :clearable="false" placeholder="请输入邮箱" />
 			</uni-forms-item>
-			<uni-forms-item name="status" label="是否启用">
+			<uni-forms-item name="status" label="员工状态">
 				<switch @change="binddata('status', $event.detail.value)" :checked="formData.status" />
 			</uni-forms-item>
 			<view class="uni-button-group">
@@ -43,11 +42,11 @@
 <script>
 	import {
 		validator
-	} from '@/js_sdk/validator/uni-id-users.js';
+	} from '@/js_sdk/validator/market-employess.js';
 
 	const db = uniCloud.database();
 	const dbCmd = db.command;
-	const dbCollectionName = 'uni-id-users';
+	const dbCollectionName = 'market-employess';
 
 	function getValidator(fields) {
 		let result = {}
@@ -87,22 +86,14 @@
 			this.loadroles()
 		},
 		methods: {
-			/**
-			 * 跳转应用管理的 list 页
-			 */
-			gotoAppList() {
-				uni.navigateTo({
-					url: '../app/list'
-				})
-			},
 			gotoTagList() {
 				uni.navigateTo({
-					url: '../tag/list'
+					url: '../department/list'
 				})
 			},
 			gotoTagAdd() {
 				uni.navigateTo({
-					url: '../tag/add',
+					url: '../department/add',
 					events: {
 						refreshCheckboxData: () => {
 							this.$refs.checkbox.loadData()
@@ -158,7 +149,7 @@
 				})
 			},
 			loadroles() {
-				db.collection('uni-id-roles').limit(500).get().then(res => {
+				db.collection('market-jobs').limit(500).get().then(res => {
 					const roleIds = []
 					this.roles = res.result.data.map(item => {
 						roleIds.push(item.role_id)

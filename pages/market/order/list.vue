@@ -1,51 +1,42 @@
 <template>
-  <view>
+  <view class="fix-top-window">
     <view class="uni-header">
       <view class="uni-group">
-        <view class="uni-title"></view>
-        <view class="uni-sub-title"></view>
+      <!-- 	<view class="uni-title">{{$t('order.text.title')}}</view>
+        <view class="uni-sub-title"></view> -->
       </view>
       <view class="uni-group">
         <input class="uni-search" type="text" v-model="query" @confirm="search" placeholder="请输入搜索内容" />
         <button class="uni-button" type="default" size="mini" @click="search">搜索</button>
-        <button class="uni-button" type="default" size="mini" @click="navigateTo('./add')">新增</button>
-        <button class="uni-button" type="default" size="mini" :disabled="!selectedIndexs.length" @click="delTable">批量删除</button>
+        <button class="uni-button" type="primary" size="mini" @click="navigateTo('./add')">新增</button>
+        <button class="uni-button" type="warn" size="mini" :disabled="!selectedIndexs.length" @click="delTable">批量删除</button>
         <download-excel class="hide-on-phone" :fields="exportExcel.fields" :data="exportExcelData" :type="exportExcel.type" :name="exportExcel.filename">
           <button class="uni-button" type="primary" size="mini">导出 Excel</button>
         </download-excel>
       </view>
     </view>
     <view class="uni-container">
-      <unicloud-db ref="udb" :collection="collectionList" field="order_guid,user_id,good_id,platform_type,total_cash,discount_cash,is_promotion,payment_date,cancel_date,create_date" :where="where" page-data="replace"
+      <unicloud-db ref="udb" :collection="collectionList" field="order_guid,user_id,good_id{name},platform_type,total_cash,discount_cash,is_promotion,payment_date,cancel_date,create_date" :where="where" page-data="replace"
         :orderby="orderby" :getcount="true" :page-size="options.pageSize" :page-current="options.pageCurrent"
         v-slot:default="{data,pagination,loading,error,options}" :options="options" loadtime="manual" @load="onqueryload">
         <uni-table ref="table" :loading="loading" :emptyText="error.message || '没有更多数据'" border stripe type="selection" @selection-change="selectionChange">
           <uni-tr>
             <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'order_guid')" sortable @sort-change="sortChange($event, 'order_guid')">编号</uni-th>
-            <uni-th align="center" sortable @sort-change="sortChange($event, 'user_id')">user_id</uni-th>
-            <uni-th align="center" sortable @sort-change="sortChange($event, 'good_id')">商品id</uni-th>
-            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'platform_type')" sortable @sort-change="sortChange($event, 'platform_type')">platform_type</uni-th>
-            <uni-th align="center" sortable @sort-change="sortChange($event, 'total_cash')">total_cash</uni-th>
-            <uni-th align="center" sortable @sort-change="sortChange($event, 'discount_cash')">discount_cash</uni-th>
-            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'is_promotion')" sortable @sort-change="sortChange($event, 'is_promotion')">is_promotion</uni-th>
-            <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'payment_date')" sortable @sort-change="sortChange($event, 'payment_date')">payment_date</uni-th>
-            <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'cancel_date')" sortable @sort-change="sortChange($event, 'cancel_date')">cancel_date</uni-th>
-            <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'create_date')" sortable @sort-change="sortChange($event, 'create_date')">create_date</uni-th>
+            <uni-th align="center">商品名称</uni-th>
+            <uni-th align="center" sortable @sort-change="sortChange($event, 'total_cash')">实付金额</uni-th>
+            <uni-th align="center" sortable @sort-change="sortChange($event, 'discount_cash')">优惠金额</uni-th>
+            <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'payment_date')" sortable @sort-change="sortChange($event, 'payment_date')">支付时间</uni-th>
+            <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'create_date')" sortable @sort-change="sortChange($event, 'create_date')">创建时间</uni-th>
             <uni-th align="center">操作</uni-th>
           </uni-tr>
           <uni-tr v-for="(item,index) in data" :key="index">
-            <uni-td align="center">{{item.order_guid}}</uni-td>
-            <uni-td align="center">{{item.user_id}}</uni-td>
-            <uni-td align="center">{{item.good_id}}</uni-td>
-            <uni-td align="center">{{item.platform_type}}</uni-td>
+            <uni-td align="center">{{item._id}}</uni-td>
+            <uni-td v-if="item.good_id.length > 0" align="center">{{item.good_id[0].name}}</uni-td>
+			<uni-td v-else align="center">{{item.good_id[0]}}</uni-td>
             <uni-td align="center">{{item.total_cash}}</uni-td>
             <uni-td align="center">{{item.discount_cash}}</uni-td>
-            <uni-td align="center">{{item.is_promotion}}</uni-td>
             <uni-td align="center">
               <uni-dateformat :threshold="[0, 0]" :date="item.payment_date"></uni-dateformat>
-            </uni-td>
-            <uni-td align="center">
-              <uni-dateformat :threshold="[0, 0]" :date="item.cancel_date"></uni-dateformat>
             </uni-td>
             <uni-td align="center">
               <uni-dateformat :threshold="[0, 0]" :date="item.create_date"></uni-dateformat>
@@ -67,7 +58,7 @@
 </template>
 
 <script>
-  import { enumConverter, filterToWhere } from '../../../js_sdk/validator/opendb-mall-order.js';
+  import { enumConverter, filterToWhere } from '../../../js_sdk/validator/market-order.js';
 
   const db = uniCloud.database()
   // 表查询配置
@@ -85,7 +76,7 @@
   export default {
     data() {
       return {
-        collectionList: "opendb-mall-order",
+        collectionList: "market-order,market-goods",
         query: '',
         where: '',
         orderby: dbOrderBy,

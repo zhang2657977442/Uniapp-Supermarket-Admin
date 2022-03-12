@@ -2,7 +2,7 @@
 	<view class="fix-top-window">
 		<view class="uni-header">
 			<view class="uni-group hide-on-phone">
-				<view class="uni-title">{{$t('permission.text.permissionManager')}}</view>
+				<view class="uni-title">{{$t('permission.text.title')}}</view>
 				<view class="uni-sub-title"></view>
 			</view>
 			<view class="uni-group">
@@ -21,7 +21,7 @@
 			</view>
 		</view>
 		<view class="uni-container">
-			<unicloud-db ref="udb" collection="uni-id-permissions"
+			<unicloud-db ref="udb" collection="market-permissions"
 				field="permission_id,permission_name,comment,create_date" :where="where" page-data="replace"
 				:orderby="orderby" :getcount="true" :page-size="options.pageSize" :page-current="options.pageCurrent"
 				v-slot:default="{data,pagination,loading,error,options}" :options="options" loadtime="manual"
@@ -74,9 +74,6 @@
 				</view>
 			</unicloud-db>
 		</view>
-		<!-- #ifndef H5 -->
-		<fix-window />
-		<!-- #endif -->
 	</view>
 </template>
 
@@ -84,9 +81,10 @@
 	import {
 		enumConverter,
 		filterToWhere
-	} from '@/js_sdk/validator/uni-id-permissions.js';
+	} from '@/js_sdk/validator/market-permissions.js';
 
 	const db = uniCloud.database()
+	
 	// 表查询配置
 	const dbOrderBy = 'create_date desc' // 排序字段
 	const dbSearchFields = ['permission_id', 'permission_name'] // 模糊搜索字段，支持模糊搜索的字段列表

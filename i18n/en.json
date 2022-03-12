@@ -59,19 +59,49 @@
 		"empty": "No more data",
 		"piecePerPage": "piece/page"
 	},
-	"user": {
+	"order": {
 		"text": {
-			"userManager": "Users Manager"
+			"title": "Order list"
 		}
 	},
-	"role": {
+	"goods": {
 		"text": {
-			"roleManager": "Roles Manager"
+			"title": "Goods list"
+		}
+	},
+	"categories": {
+		"text": {
+			"title": "Categories list"
+		}
+	},
+	"sku": {
+		"text": {
+			"title": "Sku list"
+		}
+	},
+	"employee": {
+		"text": {
+			"title": "Employee list"
+		}
+	},
+	"jobs": {
+		"text": {
+			"title": "Jobs list"
+		}
+	},
+	"department": {
+		"text": {
+			"title": "Department list"
 		}
 	},
 	"permission": {
 		"text": {
-			"permissionManager": "Permissions Manager"
+			"title": "Permission list"
+		}
+	},
+	"log": {
+		"text": {
+			"title": "Log list"
 		}
 	},
 	"app": {

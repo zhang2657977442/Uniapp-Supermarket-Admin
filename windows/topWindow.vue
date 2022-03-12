@@ -44,7 +44,7 @@
 					</view>
 					<template v-if="userInfo.username">
 						<view class="menu-item username">
-							<uni-icons class="person" type="person" color="#666" size="13"></uni-icons>
+							<uni-icons class="person" type="person" color="#fff" size="13"></uni-icons>
 							<text>{{userInfo.username}}</text>
 						</view>
 						<view class="menu-item" @click="changePassword">
@@ -121,14 +121,6 @@
 			let menuButtonInfo = uni.getMenuButtonBoundingClientRect()
 			this.mpCapsule = menuButtonInfo.width
 			// #endif
-
-			// 沉余代码，临时处理 uni-datetime-picker 国际化不生效的问题
-			// #ifdef H5
-			uni.setLocale('en')
-			this.$nextTick(() => {
-				this.changeLanguage('zh-Hans')
-			})
-			// #endif
 		},
 		methods: {
 			...mapMutations({
@@ -198,15 +190,29 @@
 </script>
 
 <style lang="scss">
+	
+	/* #ifdef H5 */
 	.header {
-		height: 60px;
+		height: 48px;
 		width: 100%;
 		box-sizing: border-box;
 		border-bottom: 1px solid darken($top-window-bg-color, 8%);
 		background-color: $top-window-bg-color;
 		color: $top-window-text-color;
 	}
+	/* #endif */
 
+	/* #ifndef H5 */
+	.header {
+		height: 88px;
+		padding-top: 45px;
+		width: 100%;
+		box-sizing: border-box;
+		border-bottom: 1px solid darken($top-window-bg-color, 8%);
+		background-color: $top-window-bg-color;
+		color: $top-window-text-color;
+	}
+	/* #endif */
 	.navbar {
 		font-size: 14px;
 		position: relative;
@@ -227,6 +233,8 @@
 		}
 
 		text {
+			font-size: $uni-font-size-lg;
+			font-weight: 600;
 			margin-left: 8px;
 		}
 	}
@@ -284,7 +292,7 @@
 	.menu-item {
 		padding: 8px;
 		font-size: 13px;
-		color: #666;
+		color: #fff;
 		line-height: 1;
 	}
 
@@ -348,7 +356,7 @@
 		top: 1px;
 		margin-left: -6px;
 		border-top-width: 0;
-		border-bottom-color: #fff;
+		border-bottom-color: #001529;
 	}
 
 	/* 大屏时，隐藏的内容 */
@@ -391,11 +399,11 @@
 		/* #ifndef H5 */
 		top: 85px;
 		/* #endif */
-		background-color: #fff;
+		background-color: #001529;
 		z-index: 999;
 		padding: 5px 15px;
 		margin: 5px 0;
-		background-color: #fff;
+		background-color: #001529;
 		border: 1px solid #ebeef5;
 		border-radius: 4px;
 		box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);

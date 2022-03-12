@@ -2,7 +2,7 @@
 	<view class="fix-top-window">
 		<view class="uni-header">
 			<view class="uni-group hide-on-phone">
-				<view class="uni-title">{{$t('role.text.roleManager')}}</view>
+				<view class="uni-title">{{$t('jobs.text.title')}}</view>
 				<view class="uni-sub-title"></view>
 			</view>
 			<view class="uni-group">
@@ -20,7 +20,7 @@
 			</view>
 		</view>
 		<view class="uni-container">
-			<unicloud-db ref="udb" collection="uni-id-roles,uni-id-permissions"
+			<unicloud-db ref="udb" collection="market-jobs,market-permissions"
 				field="role_id,role_name,permission{permission_name},comment,create_date" :where="where"
 				page-data="replace" :orderby="orderby" :getcount="true" :page-size="options.pageSize"
 				:page-current="options.pageCurrent" v-slot:default="{data,pagination,loading,error,options}"
@@ -29,15 +29,15 @@
 					type="selection" @selection-change="selectionChange">
 					<uni-tr>
 						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'role_id')"
-							sortable @sort-change="sortChange($event, 'role_id')">唯一ID</uni-th>
+							sortable @sort-change="sortChange($event, 'role_id')">岗位标识</uni-th>
 						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'role_name')"
-							sortable @sort-change="sortChange($event, 'role_name')">名称</uni-th>
+							sortable @sort-change="sortChange($event, 'role_name')">岗位名称</uni-th>
 						<uni-th align="center">权限</uni-th>
 						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'comment')"
 							sortable @sort-change="sortChange($event, 'comment')">备注</uni-th>
 						<uni-th align="center" filter-type="timestamp"
 							@filter-change="filterChange($event, 'create_date')" sortable
-							@sort-change="sortChange($event, 'create_date')">创建时间</uni-th>
+							@sort-change="sortChange($event, 'create_date')">设立时间</uni-th>
 						<uni-th align="center">操作</uni-th>
 					</uni-tr>
 					<uni-tr v-for="(item,index) in data" :key="index">
@@ -73,9 +73,6 @@
 				</view>
 			</unicloud-db>
 		</view>
-		<!-- #ifndef H5 -->
-		<fix-window />
-		<!-- #endif -->
 	</view>
 </template>
 
@@ -83,7 +80,7 @@
 	import {
 		enumConverter,
 		filterToWhere
-	} from '@/js_sdk/validator/uni-id-roles.js';
+	} from '@/js_sdk/validator/market-jobs.js';
 
 	const db = uniCloud.database()
 	// 表查询配置

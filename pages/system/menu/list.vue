@@ -28,7 +28,7 @@
 				</view>
 			</view>
 			<view class="uni-container">
-				<unicloud-db ref="udb" @load="onqueryload" collection="opendb-admin-menus" :options="options"
+				<unicloud-db ref="udb" @load="onqueryload" collection="system-menus" :options="options"
 					:where="where" page-data="replace" :orderby="orderby" :getcount="true" :page-size="options.pageSize"
 					:page-current="options.pageCurrent" v-slot:default="{data,pagination,loading,error}">
 					<uni-table :loading="loading" class="table-pc" :emptyText="errMsg || $t('common.empty')" border
@@ -92,9 +92,6 @@
 				</view>
 			</view>
 		</view>
-		<!-- #ifndef H5 -->
-		<fix-window />
-		<!-- #endif -->
 	</view>
 </template>
 
@@ -337,7 +334,7 @@
 							mask: true
 						})
 						const checkAll = menus.length === pluginMenus.length
-						uniCloud.database().collection('opendb-admin-menus').add(menus).then(res => {
+						uniCloud.database().collection('menus').add(menus).then(res => {
 							this.init()
 							uni.showModal({
 								title: '提示',
@@ -367,12 +364,6 @@
 	}
 </script>
 <style>
-	/* #ifndef H5 */
-	page {
-		padding-top: 85px;
-	}
-
-	/* #endif */
 	.menu-disable {
 		color: red;
 	}

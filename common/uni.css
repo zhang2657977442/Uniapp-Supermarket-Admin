@@ -124,7 +124,7 @@ uni-page-head .uni-btn-icon {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	flex-wrap: wrap;
+	flex-wrap: no-wrap;
 	word-break: keep-all;
 }
 
@@ -300,7 +300,7 @@ uni-page-head .uni-btn-icon {
 
 /* #ifndef H5 */
 .fix-top-window {
-	margin-top: 85px;
+	margin-top: 5px;
 }
 
 /* #endif */

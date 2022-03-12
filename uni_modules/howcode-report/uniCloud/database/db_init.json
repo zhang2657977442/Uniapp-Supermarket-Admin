@@ -3772,14 +3772,6 @@
 					"title": "编号",
 					"trim": "both"
 				},
-				"user_id": {
-					"bsonType": "string",
-					"description": "下单用户ID， 参考`uni-id-users` 表",
-					"foreignKey": "uni-id-users._id",
-					"defaultValue": {
-						"$env": "uid"
-					}
-				},
 				"good_id": {
 					"bsonType": "string",
 					"title": "商品id",
@@ -3829,7 +3821,7 @@
 			}
 		}
 	},
-	"opendb-mall-sku": {
+	"sku": {
 		"data": [{
 				"_id": {
 					"$oid": "6061952ed635880001600917"

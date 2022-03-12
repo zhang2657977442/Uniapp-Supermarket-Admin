@@ -1,10 +1,10 @@
 <template>
   <view class="uni-container">
-    <uni-forms ref="form" :value="formData" validateTrigger="bind">
+    <uni-forms ref="form" :value="formData" validateTrigger="bind" :rules="rules">
       <uni-forms-item name="name" label="类别名称" required>
         <uni-easyinput placeholder="类别名称" v-model="formData.name" trim="both"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="parent_id" label="">
+      <uni-forms-item name="parent_id" label="一级类别">
         <uni-easyinput placeholder="父ID，用于多级分类" v-model="formData.parent_id"></uni-easyinput>
       </uni-forms-item>
       <uni-forms-item name="sort" label="排序">
@@ -21,11 +21,11 @@
 </template>
 
 <script>
-  import { validator } from '../../../js_sdk/validator/opendb-mall-categories.js';
+  import { validator } from '../../../js_sdk/validator/market-categories.js';
 
   const db = uniCloud.database();
   const dbCmd = db.command;
-  const dbCollectionName = 'opendb-mall-categories';
+  const dbCollectionName = 'market-categories';
 
   function getValidator(fields) {
     let result = {}

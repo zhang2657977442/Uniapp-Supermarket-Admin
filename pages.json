@@ -1,8 +1,26 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/index/index"
-		}, {
+			"path": "uni_modules/howcode-report/pages/reportdemo/reportdemo",
+			"style": {
+				"navigationBarTitleText": "工作台"
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "快速结账",
+				"navigationStyle": "default"
+			}
+		}, 
+		{
+			"path": "pages/index/pay",
+			"style": {
+				"navigationBarTitleText": "账单详情",
+				"navigationStyle": "default"
+			}
+		}, 
+		{
 			"path": "pages/login/login",
 			"style": {
 				"topWindow": false,
@@ -19,15 +37,8 @@
 			"style": {
 				"navigationBarTitleText": "修改密码"
 			}
-		
-		}, 
-		{
-			"path": "uni_modules/howcode-report/pages/reportdemo/reportdemo",
-			"style": {
-				"navigationBarTitleText": "报表中心"
-			}
 		}
-
+	
 ], 
 	"subPackages": [
 		{
@@ -35,78 +46,91 @@
 	"pages":[{
 		    "path": "goods/add",
 		    "style": {
-		        "navigationBarTitleText": "新增"
+		        "navigationBarTitleText": "新增商品",
+				"navigationStyle": "default"
 		    }
 		}
 		,{
 		    "path": "goods/edit",
 		    "style": {
-		        "navigationBarTitleText": "编辑"
+		        "navigationBarTitleText": "编辑商品",
+				"navigationStyle": "default"
 		    }
 		}
 		,{
 		    "path": "goods/list",
 		    "style": {
-		        "navigationBarTitleText": "列表"
+		        "navigationBarTitleText": "商品列表",
+				"navigationStyle": "default"
 		    }
 		},{
     "path": "sku/add",
     "style": {
-        "navigationBarTitleText": "新增"
+        "navigationBarTitleText": "新增sku",
+		"navigationStyle": "default"
     }
 }
 ,{
     "path": "sku/edit",
     "style": {
-        "navigationBarTitleText": "编辑"
+        "navigationBarTitleText": "编辑sku",
+		"navigationStyle": "default"
     }
 }
 ,{
     "path": "sku/list",
     "style": {
-        "navigationBarTitleText": "列表"
+        "navigationBarTitleText": "sku管理",
+		"navigationStyle": "default"
     }
 }
 ,{
     "path": "order/add",
     "style": {
-        "navigationBarTitleText": "新增"
+        "navigationBarTitleText": "新增账单",
+		"navigationStyle": "default"
     }
 }
 ,{
     "path": "order/edit",
     "style": {
-        "navigationBarTitleText": "编辑"
+        "navigationBarTitleText": "编辑账单",
+		"navigationStyle": "default"
     }
 }
 ,{
     "path": "order/list",
     "style": {
-        "navigationBarTitleText": "列表"
+        "navigationBarTitleText": "账单管理",
+		"navigationStyle": "default"
     }
 }
 ,{
     "path": "categories/add",
     "style": {
-        "navigationBarTitleText": "新增"
+        "navigationBarTitleText": "新增类别",
+		"navigationStyle": "default"
     }
 }
 ,{
     "path": "categories/edit",
     "style": {
-        "navigationBarTitleText": "编辑"
+        "navigationBarTitleText": "编辑类别",
+		"navigationStyle": "default"
     }
 }
 ,{
     "path": "categories/list",
     "style": {
-        "navigationBarTitleText": "列表"
+        "navigationBarTitleText": "类别管理",
+		"navigationStyle": "default"
     }
 },
 {
 			"path": "permission/list",
 			"style": {
-				"navigationBarTitleText": "权限管理"
+				"navigationBarTitleText": "权限管理",
+				"navigationStyle": "default"
 			}
 		}, {
 			"path": "permission/add",
@@ -117,58 +141,63 @@
 		}, {
 			"path": "permission/edit",
 			"style": {
-				"navigationBarTitleText": "修改权限",
+				"navigationBarTitleText": "编辑权限",
 				"navigationStyle": "default"
 			}
 		},
 		{
 			"path": "jobs/add",
 			"style": {
-				"navigationBarTitleText": "新增角色",
+				"navigationBarTitleText": "新增岗位",
 				"navigationStyle": "default"
 			}
 		}, {
 			"path": "jobs/edit",
 			"style": {
-				"navigationBarTitleText": "修改角色",
+				"navigationBarTitleText": "编辑岗位",
 				"navigationStyle": "default"
 			}
 		}, {
 			"path": "jobs/list",
 			"style": {
-				"navigationBarTitleText": "角色管理"
+				"navigationBarTitleText": "岗位管理",
+				"navigationStyle": "default"
 			}
 		}, {
 			"path": "employees/add",
 			"style": {
-				"navigationBarTitleText": "新增用户",
+				"navigationBarTitleText": "新增员工",
 				"navigationStyle": "default"
 			}
 		}, {
 			"path": "employees/edit",
 			"style": {
-				"navigationBarTitleText": "修改用户",
+				"navigationBarTitleText": "编辑员工",
 				"navigationStyle": "default"
 			}
 		}, {
 			"path": "employees/list",
 			"style": {
-				"navigationBarTitleText": "用户管理"
+				"navigationBarTitleText": "员工管理",
+				"navigationStyle": "default"
 			}
 		}, {
 			"path": "department/add",
 			"style": {
-				"navigationBarTitleText": "新增标签"
+				"navigationBarTitleText": "新增部门",
+				"navigationStyle": "default"
 			}
 		}, {
 			"path": "department/edit",
 			"style": {
-				"navigationBarTitleText": "修改标签"
+				"navigationBarTitleText": " 编辑部门",
+				"navigationStyle": "default"
 			}
 		}, {
 			"path": "department/list",
 			"style": {
-				"navigationBarTitleText": "标签管理"
+				"navigationBarTitleText": "部门管理",
+				"navigationStyle": "default"
 			}
 		}
 ]
@@ -178,7 +207,8 @@
 		"pages": [{
 			"path": "menu/list",
 			"style": {
-				"navigationBarTitleText": "菜单管理"
+				"navigationBarTitleText": "菜单管理",
+				"navigationStyle": "default"
 			}
 		}, {
 			"path": "menu/add",
@@ -209,23 +239,27 @@
 		}, {
 			"path": "app/list",
 			"style": {
-				"navigationBarTitleText": "应用管理"
+				"navigationBarTitleText": "应用管理",
+				"navigationStyle": "default"
 			}
 		}, 
 		{
-			"path": "uni-id-log/add",
+			"path": "log/add",
 			"style": {
-				"navigationBarTitleText": "新增"
+				"navigationBarTitleText": "新增日志",
+				"navigationStyle": "default"
 			}
 		}, {
-			"path": "uni-id-log/edit",
+			"path": "log/edit",
 			"style": {
-				"navigationBarTitleText": "编辑"
+				"navigationBarTitleText": "编辑日志",
+				"navigationStyle": "default"
 			}
 		}, {
-			"path": "uni-id-log/list",
+			"path": "log/list",
 			"style": {
-				"navigationBarTitleText": "列表"
+				"navigationBarTitleText": "日志管理",
+				"navigationStyle": "default"
 			}
 		}
 		]
@@ -252,15 +286,15 @@
 	}],
 	"globalStyle": {
 		"navigationStyle": "custom",
-		"navigationBarTextStyle": "black",
+		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "管理系统",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarBackgroundColor": "#001529",
+		"backgroundColor": "#001529"
 	},
 	"topWindow": {
 		"path": "windows/topWindow",
 		"style": {
-			"height": "60px"
+			"height": "48px"
 		},
 		"matchMedia": {
 			"minWidth": 0
