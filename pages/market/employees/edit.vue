@@ -1,7 +1,7 @@
 <template>
 	<view class="uni-container">
 		<uni-forms ref="form" v-model="formData" :rules="rules" validateTrigger="bind" @submit="submit">
-			<uni-forms-item name="username" label="员工名" required>
+			<uni-forms-item name="username" label="名称" required>
 				<uni-easyinput v-model="formData.username" :clearable="false" placeholder="请输入用户名" />
 			</uni-forms-item>
 			<uni-forms-item :name="showPassword ? 'password' : ''" label="重置密码">
@@ -23,12 +23,12 @@
 				<uni-data-checkbox :multiple="true" v-model="formData.dcloud_appid" collection="system-app"
 					field="appid as value, name as text"></uni-data-checkbox>
 			</uni-forms-item>
-			<uni-forms-item name="mobile" label="手机号">
+<!-- 			<uni-forms-item name="mobile" label="手机号">
 				<uni-easyinput v-model="formData.mobile" :clearable="false" placeholder="请输入手机号" />
 			</uni-forms-item>
 			<uni-forms-item name="email" label="邮箱">
 				<uni-easyinput v-model="formData.email" :clearable="false" placeholder="请输入邮箱" />
-			</uni-forms-item>
+			</uni-forms-item> -->
 			<uni-forms-item name="status" label="员工状态">
 				<switch v-if="Number(formData.status) < 2" @change="binddata('status', $event.detail.value)" :checked="formData.status" />
 				<view v-else class="uni-form-item-empty">{{parseUserStatus(formData.status)}}</view>

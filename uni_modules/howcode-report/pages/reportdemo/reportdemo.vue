@@ -82,7 +82,6 @@
 
 	/* #endif */
 	@import "../../static/css/common.wxss";
-	@import "../../static/css/uni.css";
 	@import "../../static/css/icon.wxss";
 
 	.window {

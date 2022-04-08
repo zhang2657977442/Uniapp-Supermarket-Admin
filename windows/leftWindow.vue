@@ -73,7 +73,7 @@
 					url = '/' + url
 				}
 				// TODO 后续要调整
-				uni.redirectTo({
+				uni.navigateTo({
 					url: url,
 					fail: () => {
 						uni.showModal({

@@ -9,15 +9,13 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "快速结账",
-				"navigationStyle": "default"
+				"navigationBarTitleText": "快速结账"
 			}
 		}, 
 		{
 			"path": "pages/index/pay",
 			"style": {
-				"navigationBarTitleText": "账单详情",
-				"navigationStyle": "default"
+				"navigationBarTitleText": "账单详情"
 			}
 		}, 
 		{
@@ -46,63 +44,54 @@
 	"pages":[{
 		    "path": "goods/add",
 		    "style": {
-		        "navigationBarTitleText": "新增商品",
-				"navigationStyle": "default"
+		        "navigationBarTitleText": "新增商品"
 		    }
 		}
 		,{
 		    "path": "goods/edit",
 		    "style": {
-		        "navigationBarTitleText": "编辑商品",
-				"navigationStyle": "default"
+		        "navigationBarTitleText": "编辑商品"
 		    }
 		}
 		,{
 		    "path": "goods/list",
 		    "style": {
-		        "navigationBarTitleText": "商品列表",
-				"navigationStyle": "default"
+		        "navigationBarTitleText": "商品列表"
 		    }
 		},{
     "path": "sku/add",
     "style": {
-        "navigationBarTitleText": "新增sku",
-		"navigationStyle": "default"
+        "navigationBarTitleText": "新增sku"
     }
 }
 ,{
     "path": "sku/edit",
     "style": {
-        "navigationBarTitleText": "编辑sku",
-		"navigationStyle": "default"
+        "navigationBarTitleText": "编辑sku"
     }
 }
 ,{
     "path": "sku/list",
     "style": {
-        "navigationBarTitleText": "sku管理",
-		"navigationStyle": "default"
+        "navigationBarTitleText": "sku管理"
     }
 }
 ,{
     "path": "order/add",
     "style": {
-        "navigationBarTitleText": "新增账单",
-		"navigationStyle": "default"
+        "navigationBarTitleText": "新增账单"
     }
 }
 ,{
     "path": "order/edit",
     "style": {
-        "navigationBarTitleText": "编辑账单",
-		"navigationStyle": "default"
+        "navigationBarTitleText": "编辑账单"
     }
 }
 ,{
     "path": "order/list",
     "style": {
-        "navigationBarTitleText": "账单管理",
-		"navigationStyle": "default"
+        "navigationBarTitleText": "账单管理"
     }
 }
 ,{
@@ -115,89 +104,75 @@
 ,{
     "path": "categories/edit",
     "style": {
-        "navigationBarTitleText": "编辑类别",
-		"navigationStyle": "default"
+        "navigationBarTitleText": "编辑类别"
     }
 }
 ,{
     "path": "categories/list",
     "style": {
-        "navigationBarTitleText": "类别管理",
-		"navigationStyle": "default"
+        "navigationBarTitleText": "类别管理"
     }
 },
 {
 			"path": "permission/list",
 			"style": {
-				"navigationBarTitleText": "权限管理",
-				"navigationStyle": "default"
+				"navigationBarTitleText": "权限管理"
 			}
 		}, {
 			"path": "permission/add",
 			"style": {
-				"navigationBarTitleText": "新增权限",
-				"navigationStyle": "default"
+				"navigationBarTitleText": "新增权限"
 			}
 		}, {
 			"path": "permission/edit",
 			"style": {
-				"navigationBarTitleText": "编辑权限",
-				"navigationStyle": "default"
+				"navigationBarTitleText": "编辑权限"
 			}
 		},
 		{
 			"path": "jobs/add",
 			"style": {
-				"navigationBarTitleText": "新增岗位",
-				"navigationStyle": "default"
+				"navigationBarTitleText": "新增岗位"
 			}
 		}, {
 			"path": "jobs/edit",
 			"style": {
-				"navigationBarTitleText": "编辑岗位",
-				"navigationStyle": "default"
+				"navigationBarTitleText": "编辑岗位"
 			}
 		}, {
 			"path": "jobs/list",
 			"style": {
-				"navigationBarTitleText": "岗位管理",
-				"navigationStyle": "default"
+				"navigationBarTitleText": "岗位管理"
 			}
 		}, {
 			"path": "employees/add",
 			"style": {
-				"navigationBarTitleText": "新增员工",
-				"navigationStyle": "default"
+				"navigationBarTitleText": "新增员工"
 			}
 		}, {
 			"path": "employees/edit",
 			"style": {
-				"navigationBarTitleText": "编辑员工",
-				"navigationStyle": "default"
+				"navigationBarTitleText": "编辑员工"
 			}
 		}, {
 			"path": "employees/list",
 			"style": {
-				"navigationBarTitleText": "员工管理",
-				"navigationStyle": "default"
+				"navigationBarTitleText": "员工管理"
 			}
 		}, {
 			"path": "department/add",
 			"style": {
-				"navigationBarTitleText": "新增部门",
-				"navigationStyle": "default"
+				"navigationBarTitleText": "新增部门"
 			}
 		}, {
 			"path": "department/edit",
 			"style": {
-				"navigationBarTitleText": " 编辑部门",
-				"navigationStyle": "default"
+				"navigationBarTitleText": " 编辑部门"
 			}
 		}, {
 			"path": "department/list",
 			"style": {
-				"navigationBarTitleText": "部门管理",
-				"navigationStyle": "default"
+				"navigationBarTitleText": "部门管理"
 			}
 		}
 ]
@@ -207,59 +182,50 @@
 		"pages": [{
 			"path": "menu/list",
 			"style": {
-				"navigationBarTitleText": "菜单管理",
-				"navigationStyle": "default"
+				"navigationBarTitleText": "菜单管理"
 			}
 		}, {
 			"path": "menu/add",
 			"style": {
-				"navigationBarTitleText": "新增菜单",
-				"navigationStyle": "default"
+				"navigationBarTitleText": "新增菜单"
 			}
 		}, {
 			"path": "menu/edit",
 			"style": {
-				"navigationBarTitleText": "修改菜单",
-				"navigationStyle": "default"
+				"navigationBarTitleText": "修改菜单"
 			}
 			
 		}, 
 		{
 			"path": "app/add",
 			"style": {
-				"navigationBarTitleText": "新增应用",
-				"navigationStyle": "default"
+				"navigationBarTitleText": "新增应用"
 			}
 		},{
 			"path": "app/edit",
 			"style": {
-				"navigationBarTitleText": "修改应用",
-				"navigationStyle": "default"
+				"navigationBarTitleText": "修改应用"
 			}
 		}, {
 			"path": "app/list",
 			"style": {
-				"navigationBarTitleText": "应用管理",
-				"navigationStyle": "default"
+				"navigationBarTitleText": "应用管理"
 			}
 		}, 
 		{
 			"path": "log/add",
 			"style": {
-				"navigationBarTitleText": "新增日志",
-				"navigationStyle": "default"
+				"navigationBarTitleText": "新增日志"
 			}
 		}, {
 			"path": "log/edit",
 			"style": {
-				"navigationBarTitleText": "编辑日志",
-				"navigationStyle": "default"
+				"navigationBarTitleText": "编辑日志"
 			}
 		}, {
 			"path": "log/list",
 			"style": {
-				"navigationBarTitleText": "日志管理",
-				"navigationStyle": "default"
+				"navigationBarTitleText": "日志管理"
 			}
 		}
 		]

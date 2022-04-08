@@ -530,12 +530,12 @@ exports.main = async (event, context) => {
 			} = await db.collection('market-employess').where({
 				role: 'admin'
 			}).count()
-			if (total) {
-				return {
-					code: 10001,
-					message: '超级管理员已存在，请登录...'
-				}
-			}
+			// if (total) {
+			// 	return {
+			// 		code: 10001,
+			// 		message: '超级管理员已存在，请登录...'
+			// 	}
+			// }
 			const appid = params.appid
 			const appName = params.appName
 			delete params.appid

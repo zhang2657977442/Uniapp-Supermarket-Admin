@@ -34,13 +34,13 @@
 					type="selection" @selection-change="selectionChange">
 					<uni-tr>
 						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'username')"
-							sortable @sort-change="sortChange($event, 'username')">员工名</uni-th>
-						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'mobile')"
-							sortable @sort-change="sortChange($event, 'mobile')">手机号码</uni-th>
+							sortable @sort-change="sortChange($event, 'username')">名称</uni-th>
+						<!-- <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'mobile')"
+							sortable @sort-change="sortChange($event, 'mobile')">手机号码</uni-th> -->
 						<uni-th align="center" filter-type="select" :filter-data="options.filterData.status_localdata"
 							@filter-change="filterChange($event, 'status')">员工状态</uni-th>
-						<uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'email')"
-							sortable @sort-change="sortChange($event, 'email')">邮箱</uni-th>
+						<!-- <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'email')"
+							sortable @sort-change="sortChange($event, 'email')">邮箱</uni-th> -->
 						<uni-th align="center">岗位</uni-th>
 						<uni-th align="center" filter-type="select" :filter-data="tagsData"
 							@filter-change="filterChange($event, 'tags')">所属部门</uni-th>
@@ -52,11 +52,11 @@
 					</uni-tr>
 					<uni-tr v-for="(item,index) in data" :key="index">
 						<uni-td align="center">{{item.username}}</uni-td>
-						<uni-td align="center">{{item.mobile}}</uni-td>
+						<!-- <uni-td align="center">{{item.mobile}}</uni-td> -->
 						<uni-td align="center">{{options.status_valuetotext[item.status]}}</uni-td>
-						<uni-td align="center">
+						<!-- <uni-td align="center">
 							<uni-link :href="'mailto:'+item.email" :text="item.email"></uni-link>
-						</uni-td>
+						</uni-td> -->
 						<uni-td align="center">{{item.role}}</uni-td>
 						<uni-td align="center">
 							<template v-if="item.tags" v-for="tag in item.tags">
