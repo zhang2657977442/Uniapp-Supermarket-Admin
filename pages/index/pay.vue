@@ -1,7 +1,7 @@
 <template>
 	<view class="warp">
 		<!-- 任务 -->
-		<view class="task-box b-card">
+		<view  v-if="empty"  class="task-box b-card">
 			<view class="tips">感谢您的光临~</view>
 			<view class="id">订单编号：9041081653460</view>
 			<view class="date">下单时间: 2022-03-11 09:06:18</view>
@@ -29,6 +29,10 @@
 
 			<button type="primary" @click="finish()">支付</button>
 		</view>
+	    <view class="empty" v-else>
+	    		<image class="img" src="../../static/empty.svg" mode=""></image>
+				<view>识别不到任何内容~</view>
+	    </view>
 	</view>
 </template>
 
@@ -42,12 +46,15 @@ export default {
 			total: 6562,
 			order: [],
 			orderId: [],
+			empty:false,
 			total_cash: 0
 		}
 	},
 	onLoad(option) {
-		if (option.item != null) {
-			this.calcCash(JSON.parse(decodeURIComponent(option.item)))
+		console.log(option)
+		if (option.item !== '{}') {
+			this.empty = true
+			this.calcCash(JSON.parse(option.item))
 		}
 	},
 	methods: {
@@ -205,5 +212,22 @@ $signH: 80rpx;
 			}
 		}
 	}
+    /* #ifdef H5 */
+    .empty {
+		padding-top:200px;
+    	font-size: 45rpx;
+    	font-weight: 600;
+    	text-align: center;
+    }
+    /* #endif */
+	/* #ifdef MP-WEIXIN */
+	.empty {
+		margin-top: 80rpx;
+		font-size: 45rpx;
+		font-weight: 600;
+		text-align: center;
+	}
+	/* #endif */
+	
 }
 </style>

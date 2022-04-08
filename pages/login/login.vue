@@ -33,7 +33,10 @@
 						@click="submitForm">{{$t('login.button.login')}}</button>
 				</view>
 			</uni-forms>
-			<!-- <view class="uni-tips">
+			<view class="uni-tips">
+				<text class="uni-tips-text">{{tips}}</text>
+			</view>
+		<!-- 	<view class="uni-tips">
 				<text class="uni-tips-text" @click="initAdmin">{{$t('login.text.prompt')}}...</text>
 			</view> -->
 		</view>
@@ -41,6 +44,7 @@
 </template>
 
 <script>
+const db = uniCloud.database();
 	import {
 		mapMutations,
 		mapActions
@@ -58,6 +62,7 @@
 	export default {
 		data() {
 			return {
+				tips:"",
 				...config.navBar,
 				indexPage: config.index.url,
 				showPassword: true,
@@ -107,6 +112,9 @@
 			}
 		},
 		mounted() {
+			db.collection('system-text').get().then((res)=>{
+				this.tips = res.result.data[0].text
+			})
 			// #ifdef H5
 			// #ifndef VUE3
 			this.focus()

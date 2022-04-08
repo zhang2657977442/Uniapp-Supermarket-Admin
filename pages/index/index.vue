@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<!-- #ifdef H5 -->
-		<button class="uni-button" type="primary" @click="upload">上传图片</button>
+		<button class="uni-button btn" type="primary" @click="upload">上传图片</button>
 		<!-- #endif -->
 		<!-- #ifndef H5 -->
 		<camera
@@ -143,7 +143,7 @@ export default {
 								icon: 'success'
 							})
 							uni.redirectTo({
-								url: "/pages/index/pay?item=" + encodeURIComponent(JSON.stringify(this.ssdResult))
+								url: '/pages/index/pay?item=' + encodeURIComponent(JSON.stringify(this.ssdResult))
 							})
 						}
 					})
@@ -152,13 +152,12 @@ export default {
 		},
 		checkOut() {
 			console.log(this.imgList)
-			uni.showToast({
+			uni.showLoading({
 				title: '账单生成中',
-				icon: 'loading',
 				mask: true
 			})
 			const uploadTask = uni.uploadFile({
-				url: 'http://whiteones.cn:8000/file_upload', //仅为示例，非真实的接口地址
+				url: 'https://whiteones.cn/api/file_upload', //仅为示例，非真实的接口地址
 				filePath: this.imgList[0].src,
 				name: 'file',
 				formData: {
@@ -166,10 +165,10 @@ export default {
 				},
 				success: uploadFileRes => {
 					this.ssdResult = JSON.parse(uploadFileRes.data).result
-					uni.hideToast()
 					uni.redirectTo({
-						url: "/pages/index/pay?item=" + encodeURIComponent(JSON.stringify(this.ssdResult))
+						url: '/pages/index/pay?item=' + JSON.stringify(this.ssdResult)
 					})
+					uni.hideLoading()
 				}
 			})
 		},
@@ -312,11 +311,21 @@ export default {
 				url: '../../uni_modules/howcode-report/pages/reportdemo/reportdemo'
 			})
 		}
-},
+	}
 }
 </script>
 
 <style lang="scss">
+.btn {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 34px;
+	width: 200px;
+	margin:auto;
+}
 .topBox {
 	width: 750rpx;
 	box-sizing: border-box;
